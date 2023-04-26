@@ -1,0 +1,55 @@
+<mat-toolbar class="toolbar">
+    <button type="button" mat-button (click)="drawer.toggle()">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <span>MyApp</span>
+    <h1 *ngIf="mostrarHora"><span>Hora actual: </span>{{horaActual$ |async}}</h1>
+  </mat-toolbar>
+  
+  <mat-drawer-container class="sidenav-container">
+    <mat-drawer #drawer class="sidenav" mode="side">
+
+      <div class="user-profile">
+        <img src="assets/user/avatar.webp" alt="user_profile">
+        <p>{{ (authUser$ | async)?.email }}</p>
+      </div>
+
+      <hr>
+
+      <mat-accordion class="accordion-container">
+
+        <mat-expansion-panel class="accordion">
+          <mat-expansion-panel-header>
+            <mat-panel-title class="accordion-title"> Profesores </mat-panel-title>
+          </mat-expansion-panel-header>
+          <button mat-flat-button class="accent-color" [routerLink]="link.path" *ngFor="let link of linksProfesores">{{ link.title }}</button>
+        </mat-expansion-panel>
+
+        <mat-expansion-panel class="accordion">
+          <mat-expansion-panel-header>
+            <mat-panel-title class="accordion-title"> Estudiantes </mat-panel-title>
+          </mat-expansion-panel-header>
+          <button mat-flat-button class="accent-color" [routerLink]="link.path" *ngFor="let link of linksEstudiantes">{{ link.title }}</button>
+        </mat-expansion-panel>
+  
+        <mat-expansion-panel class="accordion">
+          <mat-expansion-panel-header>
+            <mat-panel-title class="accordion-title"> Cursos </mat-panel-title>
+          </mat-expansion-panel-header>
+          <button mat-flat-button class="accent-color" [routerLink]="link.path" *ngFor="let link of linksCursos">{{ link.title }}</button>
+          <button mat-flat-button >Desarrollo Web</button>
+          <button mat-flat-button>Javascript</button>
+          <button mat-flat-button>React</button>
+          <button mat-flat-button>Angular</button>
+          <button mat-flat-button>Vue</button>
+        </mat-expansion-panel>
+
+        <button (click)="toggleMostrarHora()" mat-flat-button class="accordion btn-verHora">{{verHora}}</button>
+        <button (click)="logout()" mat-flat-button class="accordion btn-cerrarSesion">Cerrar sesión</button>
+      </mat-accordion>
+    </mat-drawer>
+    <main>
+      <router-outlet></router-outlet>
+    </main>   
+  </mat-drawer-container>
+  

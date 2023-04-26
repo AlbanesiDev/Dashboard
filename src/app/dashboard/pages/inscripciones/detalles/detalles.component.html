@@ -1,0 +1,9 @@
+<div class="dialog-container">
+    <h2>Información del alumno</h2>
+    <p><strong>Nombre:</strong> {{ alumno.firstName }} {{ alumno.lastName }}</p>
+    <p><strong>Curso:</strong> {{ alumno.course }}</p>
+    <p><strong>Comisión:</strong> {{ alumno.comision }}</p>
+    <p><strong>Email:</strong> {{ alumno.email }}</p>
+    <button mat-flat-button (click)="close()" class="button-close">Cerrar</button>
+
+</div>

@@ -1,0 +1,89 @@
+.toolbar {
+    background-color: #53338f;
+
+    span {
+        font-size: 1.25rem;
+        margin: 10px;
+        color: #ffffff;
+    }
+
+    button {
+        mat-icon {
+            margin: 0 !important;
+        }
+    }
+}
+
+.sidenav-container {
+    height: 100vh;
+    background-color: rgb(255, 255, 255);
+
+    .sidenav {
+        width: 250px;
+        background-color: #f1f1f1;
+        box-shadow: 2px 0px 10px 2px rgba(0, 0, 0, 0.1);
+
+        .user-profile {
+            margin-left: auto !important;
+            margin-right: auto !important;
+            width: 120px;
+            height: 120px;
+            margin: 10px;
+            img {
+                width: 100%;
+                height: 100%;
+                border: 5px solid #212121;
+            }
+        }
+
+    }
+}
+
+
+.accordion-container {
+    margin-top: 10px;
+
+    .accordion {
+        color: white;
+        background-color: #252525;
+        margin: 10px;
+
+        .accordion-title {
+            color: white;
+        }
+        button {
+            color: white;
+            background-color: #666666;
+            width: 100%;
+            margin: 5px 0px;
+        }
+        .accent-color {
+            background-color: #7f4edb;
+        }
+    }
+}
+
+h1{
+    position: absolute;
+    right: 40px;
+    margin: 0;
+    padding: 5px;
+    padding-right: 15px;
+    border-radius: 10px;
+    color: white;
+    background-color: #252525;
+    font-size: 1.25rem;
+}
+
+.btn-verHora {
+    width: 230px;
+    position: absolute;
+    bottom: 135px;
+}
+
+.btn-cerrarSesion {
+    width: 230px;
+    position: absolute;
+    bottom: 90px;
+    background-color: #2b5be0 !important;
+}

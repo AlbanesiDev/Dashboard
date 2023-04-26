@@ -1,0 +1,74 @@
+<div class="table-header-container">
+    <div class="table-filter">
+        <!-- Filter -->
+    </div>
+    <div class="table-title">
+        <h1>Lista de Inscriptos</h1>
+    </div>
+    <div class="table-button">
+        <button (click)="createAlumno()" mat-flat-button><mat-icon>add</mat-icon>
+          Inscribir alumnos
+        </button>
+    </div>
+</div>
+<div class="table-container">
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+    <ng-container matColumnDef="id">
+      <th appTitles mat-header-cell *matHeaderCellDef>Id.</th>
+      <td mat-cell *matCellDef="let alumno">{{ alumno.id }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="fullName">
+      <th appTitles mat-header-cell *matHeaderCellDef>Nombre Completo</th>
+      <td mat-cell *matCellDef="let alumno">{{ alumno | fullname }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="course">
+      <th appTitles mat-header-cell *matHeaderCellDef>Curso</th>
+      <td mat-cell *matCellDef="let alumno">{{ alumno.course }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="comision">
+      <th appTitles mat-header-cell *matHeaderCellDef>Comisión</th>
+      <td mat-cell *matCellDef="let alumno">{{ alumno.comision }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="email">
+      <th appTitles mat-header-cell *matHeaderCellDef>Email</th>
+      <td mat-cell *matCellDef="let alumno">{{ alumno.email }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="info">
+      <th mat-header-cell *matHeaderCellDef>Info</th>
+      <td mat-cell *matCellDef="let alumno">
+        <button (click)="openDetallesDialog(alumno)" mat-mini-fab	class="table-button-info">
+          <mat-icon>info</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="edit">
+      <th mat-header-cell *matHeaderCellDef></th>
+      <td mat-cell *matCellDef="let alumno">
+        <button (click)="edit(alumno)" mat-flat-button class="table-button-edit">
+          Editar
+        </button>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="delete">
+      <th mat-header-cell *matHeaderCellDef></th>
+      <td mat-cell *matCellDef="let alumno">
+        <button (click)="delete(alumno.id)" mat-flat-button class="table-button-delete">
+          Eliminar
+        </button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
+</div>
+
+

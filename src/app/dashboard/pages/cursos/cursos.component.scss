@@ -1,0 +1,49 @@
+main {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
+    .card__cursos {
+        width: 300px;
+        height: 500px;
+        margin: 20px;
+        border: 10px solid #212121;
+        background-color: #53338f;
+        border-radius: 0;
+        box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5);
+        img {
+            margin: 10px;
+            padding: 10px;
+            background-color: white;
+            border: 5px solid #212121;
+        }
+    
+        mat-card-content {
+            p {
+                color: white;
+                font-size: 1rem;
+            }
+        }
+    
+        mat-card-actions {
+            position: absolute;
+            bottom: 0;
+            padding: 0;
+    
+            button {
+                width: 120px;
+                margin: 10px;
+            }
+    
+            .card-button-edit {
+                color: white;
+                background-color: #212121;
+            }
+    
+            .card-button-delete {
+                color: white;
+                background-color: #fc3f3f;
+            }
+        }
+    }
+}
