@@ -1,7 +1,15 @@
-
-<main>
-  <button></button>
-  <mat-card class="card__cursos">
+<div class="main-top">
+  <div class="main-title">
+    <h1>Listado de Cursos</h1>
+  </div>
+  <div class="main-button">
+    <button mat-flat-button><mat-icon>add</mat-icon>
+      Agregar Curso
+    </button>
+  </div>
+</div>
+<div class="card-container">
+  <mat-card class="card-cursos">
     <img mat-card-image src="assets/Cards/Angular.png" alt="angular">
     <mat-card-content>
       <p>Profesor:</p>
@@ -14,35 +22,57 @@
       <button mat-button class="card-button-delete">Eliminar</button>
     </mat-card-actions>
   </mat-card>
-
-  <mat-card class="card__cursos">
-  
+  <mat-card class="card-cursos">
     <img mat-card-image src="assets/Cards/React.png" alt="react">
-    
     <mat-card-content>
-      <p>
-        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Error incidunt, aut facilis esse fugit nesciunt eaque illo consectetur tempora voluptate voluptatem et molestias doloremque sunt iste totam quaerat dolor labore!
-      </p>
+      <p>Profesor:</p>
+      <p>Comisión:
+      <p>Fecha de inicio:</p>
+      <p>Fecha de finalización:</p>
     </mat-card-content>
-  
     <mat-card-actions>
       <button mat-button class="card-button-edit">Editar</button>
       <button mat-button class="card-button-delete">Eliminar</button>
     </mat-card-actions>
   </mat-card>
-    <mat-card class="card__cursos">
-  
+  <mat-card class="card-cursos">
     <img mat-card-image src="assets/Cards/Vue.png" alt="Vue">
-    
     <mat-card-content>
-      <p>
-        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Error incidunt, aut facilis esse fugit nesciunt eaque illo consectetur tempora voluptate voluptatem et molestias doloremque sunt iste totam quaerat dolor labore!
-      </p>
+      <p>Profesor:</p>
+      <p>Comisión:
+      <p>Fecha de inicio:</p>
+      <p>Fecha de finalización:</p>
     </mat-card-content>
-  
     <mat-card-actions>
       <button mat-button class="card-button-edit">Editar</button>
       <button mat-button class="card-button-delete">Eliminar</button>
     </mat-card-actions>
   </mat-card>
-</main>
+  <mat-card class="card-cursos">
+    <img mat-card-image src="assets/Cards/Javascript.png" alt="Javascript">
+
+    <mat-card-content>
+      <p>Profesor:</p>
+      <p>Comisión:
+      <p>Fecha de inicio:</p>
+      <p>Fecha de finalización:</p>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-button class="card-button-edit">Editar</button>
+      <button mat-button class="card-button-delete">Eliminar</button>
+    </mat-card-actions>
+  </mat-card>
+  <mat-card class="card-cursos">
+    <img mat-card-image src="assets/Cards/DesarrolloWeb.png" alt="DesarrolloWeb">
+    <mat-card-content>
+      <p>Profesor:</p>
+      <p>Comisión:
+      <p>Fecha de inicio:</p>
+      <p>Fecha de finalización:</p>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-button class="card-button-edit">Editar</button>
+      <button mat-button class="card-button-delete">Eliminar</button>
+    </mat-card-actions>
+  </mat-card>
+</div>

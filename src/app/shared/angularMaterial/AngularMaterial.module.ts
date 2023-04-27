@@ -16,7 +16,6 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import {MatCardModule} from '@angular/material/card';
 import {MatListModule} from '@angular/material/list';
 
-
 const angularMaterialModule = [
   CommonModule,
   CdkAccordionModule,
@@ -33,7 +32,7 @@ const angularMaterialModule = [
   MatSlideToggleModule,
   MatExpansionModule,
   MatCardModule,
-  MatListModule
+  MatListModule,
 ];
 
 @NgModule({

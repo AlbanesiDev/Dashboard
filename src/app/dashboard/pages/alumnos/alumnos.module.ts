@@ -21,7 +21,7 @@ import { DetallesComponent } from './detalles/detalles.component';
     CommonModule,
     AngularMaterialModule,
     ReactiveFormsModule,
-    PipesModule
+    PipesModule,
   ],
   exports: [
     AlumnosComponent

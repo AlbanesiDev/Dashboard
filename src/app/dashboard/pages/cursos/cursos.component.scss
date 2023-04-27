@@ -1,9 +1,36 @@
-main {
+.main-top {
+    position: relative;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    margin: 20px;
+
+    .main-title {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        h1 {
+            font-size: 1.7rem;
+            margin: 0;
+        }
+    }
+
+    .main-button {
+        button {
+            color: white;
+            background-color: #212121;
+        }
+    }
+}
+
+.card-container {
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
     justify-content: center;
-    .card__cursos {
+    align-content: center;
+    .card-cursos {
         width: 300px;
         height: 500px;
         margin: 20px;
@@ -17,29 +44,29 @@ main {
             background-color: white;
             border: 5px solid #212121;
         }
-    
+
         mat-card-content {
             p {
                 color: white;
                 font-size: 1rem;
             }
         }
-    
+
         mat-card-actions {
             position: absolute;
             bottom: 0;
             padding: 0;
-    
+
             button {
                 width: 120px;
                 margin: 10px;
             }
-    
+
             .card-button-edit {
                 color: white;
                 background-color: #212121;
             }
-    
+
             .card-button-delete {
                 color: white;
                 background-color: #fc3f3f;

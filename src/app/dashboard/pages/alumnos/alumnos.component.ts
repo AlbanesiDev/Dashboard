@@ -29,9 +29,9 @@ export class AlumnosComponent {
 
   constructor(
     private matDialog: MatDialog,
-    private inscripcionesService: AlumnosService
+    private alumnosServices: AlumnosService
     ) {
-      this.inscripcionesService.obtenerInscripcion()
+      this.alumnosServices.obtenerInscripcion()
       .subscribe((inscripciones) => {
         this.dataSource.data = inscripciones;
       })

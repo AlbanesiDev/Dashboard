@@ -1,12 +1,18 @@
 .table-header-container {
+    position: relative;
     display: flex;
-    justify-content: space-between;
+    justify-content: end;
     align-items: center;
     margin: 20px;
-    
+
     .table-title {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
         h1 {
             font-size: 1.7rem;
+            margin: 0;
         }
     }
 
