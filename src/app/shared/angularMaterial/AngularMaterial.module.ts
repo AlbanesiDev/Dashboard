@@ -15,6 +15,7 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatExpansionModule } from '@angular/material/expansion';
 import {MatCardModule} from '@angular/material/card';
 import {MatListModule} from '@angular/material/list';
+import {MatDatepickerModule} from '@angular/material/datepicker';
 
 const angularMaterialModule = [
   CommonModule,
@@ -33,6 +34,7 @@ const angularMaterialModule = [
   MatExpansionModule,
   MatCardModule,
   MatListModule,
+  MatDatepickerModule
 ];
 
 @NgModule({

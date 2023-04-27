@@ -8,30 +8,29 @@ import { MatDialogRef } from '@angular/material/dialog';
   styleUrls: ['./add.component.scss']
 })
 export class AddComponent {
-    firstNameControl = new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(15)]);
-    lastNameControl = new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(15)]);
-    courseControl = new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(14)]);
-    noteControl = new FormControl('', [Validators.required, Validators.max(10)]);
-    emailControl = new FormControl('', [Validators.required, Validators.email]);
-    courses: string[] = ['Desarrollo Web', 'Javascript', 'Angular', 'React', 'Vue'];
+  profesorControl = new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(15)]);
+  courseControl = new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(14)]);
+  courses: string[] = ['Desarrollo Web', 'Javascript', 'Angular', 'React', 'Vue'];
 
-    registerForm = new FormGroup({
-        firstName: this.firstNameControl,
-        lastName: this.lastNameControl,
-        course: this.courseControl,
-        note: this.noteControl,
-        email: this.emailControl,
-    });
+  registerForm = new FormGroup({
+    profesor: this.profesorControl,
+    course: this.courseControl,
+  });
 
-    constructor(private matDialogRef: MatDialogRef<AddComponent>) {
+  constructor(private matDialogRef: MatDialogRef<AddComponent>) {
+  }
+
+  save(): void {
+    if (this.registerForm.valid) {
+        this.matDialogRef.close(this.registerForm.value);
     }
-
-    save(): void {
-        if (this.registerForm.valid) {
-            this.matDialogRef.close(this.registerForm.value);
-        }
-        else {
-            this.registerForm.markAllAsTouched();
-        }
+    else {
+        this.registerForm.markAllAsTouched();
     }
+  }
+
+  range = new FormGroup({
+      start: new FormControl<Date | null>(null),
+      end: new FormControl<Date | null>(null),
+  });
 }
