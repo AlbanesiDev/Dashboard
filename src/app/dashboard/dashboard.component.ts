@@ -1,7 +1,7 @@
 import { Component, OnDestroy } from '@angular/core';
 import { Time } from '@angular/common';
 import { Observable, Subject } from 'rxjs';
-import { Usuario } from '../core/models/Usuario';
+import { Register } from '../core/models/Register';
 import { cursos, estudiantes, profesores } from '../core/models/Links';
 import { TimeService } from '../core/services/time.service';
 import { AuthService } from '../core/services/auth.service';
@@ -27,7 +27,7 @@ export class DashboardComponent implements OnDestroy {
   linksEstudiantes = estudiantes;
   linksCursos = cursos;
   //Auth
-  authUser$: Observable<Usuario | null>;
+  authUser$: Observable<Register | null>;
   destroyed$ = new Subject<void>();
 
   constructor(

@@ -1,4 +1,4 @@
-export interface Usuario {
+export interface Register {
     id: number;
     firstName: string;
     lastName: string;

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable, BehaviorSubject, map, catchError, throwError } from 'rxjs';
-import { Usuario } from '../models/Usuario';
+import { Register } from '../models/Register';
 import { Router } from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Login } from '../models/Login';
@@ -11,24 +11,24 @@ import Swal from 'sweetalert2';
   providedIn: 'root',
 })
 export class AuthService {
-  private authUser$ = new BehaviorSubject<Usuario | null>(null);
+  private authUser$ = new BehaviorSubject<Register | null>(null);
 
   constructor(private router: Router, private httpClient: HttpClient) { }
 
-  getUserAuthenticated(): Observable<Usuario | null> {
+  getUserAuthenticated(): Observable<Register | null> {
     return this.authUser$.asObservable();
   }
-
+  
   Userlogin(formValue: Login): void {
     this.httpClient
-      .get<Usuario[]>(`${enviroment.apiBaseUrl}/usuarios`, {
+      .get<Register[]>(`${enviroment.apiBaseUrl}/Users`, {
         params: {
           ...formValue,
         },
       })
       .subscribe({
-        next: (usuarios) => {
-          const UserAuthenticated = usuarios[0];
+        next: (users) => {
+          const UserAuthenticated = users[0];
           if (UserAuthenticated) {
             localStorage.setItem('token', UserAuthenticated.token);
             this.authUser$.next(UserAuthenticated);
@@ -48,8 +48,8 @@ export class AuthService {
 
   CheckToken(): Observable<boolean> {
     const token = localStorage.getItem('token');
-    return this.httpClient.get<Usuario[]>(
-      `${enviroment.apiBaseUrl}/usuarios?token=${token}`,
+    return this.httpClient.get<Register[]>(
+      `${enviroment.apiBaseUrl}/Users?token=${token}`,
       {
         headers: new HttpHeaders({
           Authorization: token || '',
@@ -57,8 +57,8 @@ export class AuthService {
       }
     )
     .pipe(
-      map((usuarios) => {
-        const UserAuthenticated = usuarios[0];
+      map((users) => {
+        const UserAuthenticated = users[0];
         if (UserAuthenticated) {
           localStorage.setItem('token', UserAuthenticated.token);
           this.authUser$.next(UserAuthenticated);
@@ -72,10 +72,10 @@ export class AuthService {
     );
   }
 
-  UserRegister(user: Usuario): void {
+  UserRegister(user: Register): void {
     this.httpClient
-      .post<Usuario>(`${enviroment.apiBaseUrl}/usuarios`, user)
-      .subscribe((response) => {
+      .post<Register>(`${enviroment.apiBaseUrl}/Users`, user)
+      .subscribe(() => {
         this.showRegistrationSuccessful();
       });
   }
