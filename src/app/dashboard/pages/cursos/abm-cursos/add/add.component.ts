@@ -1,36 +1,50 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
-
+import { ProfesoresService } from '../../../profesores/services/profesores.service';
+import { Profesor } from '../../../profesores/profesores.component';
 @Component({
-  selector: 'app-add',
-  templateUrl: './add.component.html',
-  styleUrls: ['./add.component.scss']
+    selector: 'app-add',
+    templateUrl: './add.component.html',
+    styleUrls: ['./add.component.scss']
 })
+
 export class AddComponent {
-  profesorControl = new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(15)]);
-  courseControl = new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(14)]);
-  courses: string[] = ['Desarrollo Web', 'Javascript', 'Angular', 'React', 'Vue'];
+    profesorControl = new FormControl('', [Validators.required]);
+    courseControl = new FormControl('', [Validators.required]);
+    comisionControl = new FormControl('', [Validators.required]);
+    dateStartControl = new FormControl('', [Validators.required]);
+    dateEndControl = new FormControl('', [Validators.required]);
 
-  registerForm = new FormGroup({
-    profesor: this.profesorControl,
-    course: this.courseControl,
-  });
+    courses: string[] = ['Desarrollo Web', 'Javascript', 'Angular', 'React', 'Vue'];
+    comisions: number[] = [33210, 40300, 12023, 13420, 13420]
+    profesores: Profesor[] = [];
 
-  constructor(private matDialogRef: MatDialogRef<AddComponent>) {
-  }
+    registerForm = new FormGroup({
+        profesor: this.profesorControl,
+        course: this.courseControl,
+        comisions: this.comisionControl,
+        start: this.dateStartControl,
+        end: this.dateEndControl,
+    });
 
-  save(): void {
-    if (this.registerForm.valid) {
-        this.matDialogRef.close(this.registerForm.value);
+
+    constructor(
+        private matDialogRef: MatDialogRef<AddComponent>,
+        private profesoresService: ProfesoresService
+    ) {
+        this.profesoresService.obtenerProfesores().subscribe((firstName: Profesor[]) => {
+            this.profesores = firstName;
+        });
     }
-    else {
-        this.registerForm.markAllAsTouched();
-    }
-  }
 
-  range = new FormGroup({
-      start: new FormControl<Date | null>(null),
-      end: new FormControl<Date | null>(null),
-  });
+    save(): void {
+        if (this.registerForm.valid) {
+            this.matDialogRef.close(this.registerForm.value);
+            console.log(this.registerForm.value);
+        }
+        else {
+            this.registerForm.markAllAsTouched();
+        }
+    }
 }

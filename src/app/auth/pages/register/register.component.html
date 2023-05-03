@@ -1,0 +1,41 @@
+<div class="container-main">
+    <div class="login-container">
+        <div class="login-title">
+            <h2>Registrarse</h2>
+        </div>
+        <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+            <mat-form-field>
+                <mat-label>Nombre</mat-label>
+                <input [formControl]="firstNameControl" type="text" matInput />
+                <mat-error *ngFor="let error of firstNameControl.errors | keyvalue">{{ error | controlErrors
+                    }}</mat-error>
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Apellido</mat-label>
+                <input [formControl]="lastNameControl" type="text" matInput />
+                <mat-error *ngFor="let error of lastNameControl.errors | keyvalue">{{ error | controlErrors
+                    }}</mat-error>
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Email</mat-label>
+                <input [formControl]="emailControl" type="text" matInput />
+                <mat-error *ngFor="let error of emailControl.errors | keyvalue">{{ error | controlErrors
+                    }}</mat-error>
+            </mat-form-field>
+            <mat-form-field class="w-full">
+                <mat-label>Contraseña</mat-label>
+                <input [formControl]="passwordControl" type="password" matInput />
+                <mat-error *ngFor="let error of passwordControl.errors | keyvalue">{{ error | controlErrors
+                    }}</mat-error>
+            </mat-form-field>
+            <div class="bg-buttons">
+                <button mat-flat-button type="submit" class="register-button btnLogin">
+                    Registrarse
+                </button>
+                <br>
+                <span class="login-button">¿Ya estás registrado? <a type="submit" routerLink="/auth/login">¡Inicia sesión!</a></span>
+            </div>
+        </form>
+    </div>
+</div>
+<router-outlet></router-outlet>

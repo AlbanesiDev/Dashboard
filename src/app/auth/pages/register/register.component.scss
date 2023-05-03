@@ -7,7 +7,7 @@
         flex-wrap: nowrap;
         justify-content: space-around;
         width: 500px;
-        height: 500px;
+        height: 700px;
         margin: 20px;
         .login-title {
             h2 {
@@ -22,7 +22,7 @@
             margin: 10px 0px;
         }
         .bg-buttons {
-            .login-button {
+            .register-button {
                 width: 100%;
                 margin-bottom: 40px;
                 font-size: 1rem;
@@ -33,7 +33,7 @@
                     color: #000000;
                 }
             }
-            .register-button {
+            .login-button {
                 font-size: 1rem;
                 a {
                     margin-left: 5px;

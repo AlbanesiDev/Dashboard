@@ -1,0 +1,22 @@
+{
+  "usuarios": [
+    {
+      "id": 1,
+      "firstName": "Joaquin",
+      "lastName": "Albanesi",
+      "email": "JoaquinAlbanesiDev@gmail.com",
+      "password": "12345678",
+      "token": "hjsdfJHFDSAFMsaDsan12sdanjjadashj3FDBEWH",
+      "role": "admin"
+    },
+    {
+      "firstName": "user",
+      "lastName": "Example",
+      "email": "email@example.com",
+      "password": "12345678",
+      "token": "7muk6bI9greJ4dErd7IXCJafQcBl4ZLQH0bkcm90",
+      "rol": "user",
+      "id": 2
+    }
+  ]
+}

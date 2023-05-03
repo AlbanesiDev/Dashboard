@@ -6,7 +6,7 @@ import { Profesor } from '../profesores.component';
   providedIn: 'root',
 })
 export class ProfesoresService {
-  private alumnos$ = new BehaviorSubject<Profesor[]>([
+  private profesor$ = new BehaviorSubject<Profesor[]>([
     {
       id: 1,
       firstName: 'Amelia',
@@ -51,7 +51,7 @@ export class ProfesoresService {
 
   constructor() {}
 
-  obtenerInscripcion(): Observable<Profesor[]> {
-    return this.alumnos$.asObservable();
+  obtenerProfesores(): Observable<Profesor[]> {
+    return this.profesor$.asObservable();
   }
 }

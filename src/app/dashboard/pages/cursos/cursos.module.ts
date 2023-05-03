@@ -5,7 +5,7 @@ import { CursosComponent } from './cursos.component';
 import { AddComponent } from './abm-cursos/add/add.component';
 import { DeleteComponent } from './abm-cursos/delete/delete.component';
 import { EditComponent } from './abm-cursos/edit/edit.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PipesModule } from 'src/app/shared/pipes/pipes.module';
 
 @NgModule({
@@ -19,7 +19,8 @@ import { PipesModule } from 'src/app/shared/pipes/pipes.module';
     CommonModule,
     AngularMaterialModule,
     ReactiveFormsModule,
-    PipesModule
+    PipesModule,
+    FormsModule
   ],
   exports: [
     CursosComponent

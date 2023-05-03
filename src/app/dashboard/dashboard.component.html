@@ -11,7 +11,6 @@
 
       <div class="user-profile">
         <img src="assets/user/avatar.webp" alt="user_profile">
-        <p>{{ (authUser$ | async)?.email }}</p>
       </div>
 
       <hr>
@@ -45,7 +44,7 @@
         </mat-expansion-panel>
 
         <button (click)="toggleMostrarHora()" mat-flat-button class="accordion btn-verHora">{{verHora}}</button>
-        <button (click)="logout()" mat-flat-button class="accordion btn-cerrarSesion">Cerrar sesión</button>
+        <button (click)="Userlogout()" mat-flat-button class="accordion btn-cerrarSesion">Cerrar sesión</button>
       </mat-accordion>
     </mat-drawer>
     <main>

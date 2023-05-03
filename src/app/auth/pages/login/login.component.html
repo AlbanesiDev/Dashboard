@@ -1,1 +1,31 @@
-<p>login works!</p>
+<div class="container-main">
+    <div class="login-container">
+        <div class="login-title">
+            <h2>Iniciar sesión</h2>
+        </div>
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+            <div>
+                <mat-form-field>
+                    <mat-label>Email</mat-label>
+                    <input [formControl]="emailControl" type="text" matInput />
+                    <mat-error *ngFor="let error of emailControl.errors | keyvalue">{{ error | controlErrors}}</mat-error>
+                </mat-form-field>
+            </div>
+            <div>
+                <mat-form-field class="w-full">
+                    <mat-label>Contraseña</mat-label>
+                    <input [formControl]="passwordControl" type="password" matInput />
+                    <mat-error *ngFor="let error of passwordControl.errors | keyvalue">{{ error | controlErrors}}</mat-error>
+                </mat-form-field>
+            </div>
+            <div class="bg-buttons mt-4">
+                <button mat-flat-button type="submit" class="login-button">
+                    Ingresar
+                </button>
+                <br>
+                <span class="register-button">¿Aún no estás registrado? <a type="submit" routerLink="/auth/register">¡Registrarse!</a></span>
+            </div>
+        </form>
+    </div>
+</div>
+<router-outlet></router-outlet>

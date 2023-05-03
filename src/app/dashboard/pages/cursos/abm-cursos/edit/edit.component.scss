@@ -1,0 +1,16 @@
+.dialog-container {
+    margin: 20px;
+    width: 600px;
+    .dialog-button-cancel {
+        button {
+            color: white;
+            background-color: #212121;
+        }
+    }
+    .dialog-button-save {
+        button {
+            color: white;
+            background-color: #0d6efd;
+        }
+    }
+}

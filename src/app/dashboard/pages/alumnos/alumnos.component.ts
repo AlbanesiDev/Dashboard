@@ -30,12 +30,12 @@ export class AlumnosComponent {
   constructor(
     private matDialog: MatDialog,
     private alumnosServices: AlumnosService
-    ) {
-      this.alumnosServices.obtenerInscripcion()
-      .subscribe((inscripciones) => {
-        this.dataSource.data = inscripciones;
-      })
-    }
+  ) {
+    this.alumnosServices.obtenerInscripcion()
+    .subscribe((inscripciones) => {
+      this.dataSource.data = inscripciones;
+    })
+  }
 
   openDetallesDialog(alumno: Alumno): void {
     this.matDialog.open(DetallesComponent, {
