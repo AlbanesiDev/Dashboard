@@ -3,23 +3,25 @@
     <h1>Listado de Cursos</h1>
   </div>
   <div class="main-button">
-    <button (click)="createCurso()" mat-flat-button><mat-icon>add</mat-icon>
+    <button (click)="createCourse()" mat-flat-button><mat-icon>add</mat-icon>
       Agregar Curso
     </button>
   </div>
 </div>
 <div class="card-container">
-  <mat-card class="card-cursos" *ngFor="let curso of cursos">
-    <img mat-card-image src="{{curso.imagen}}" alt="{{curso.nombre}}">
+  <mat-card class="card-cursos" *ngFor="let course of courses">
+    <img mat-card-image src="{{course.img}}" alt="{{course.course}}">
     <mat-card-content>
-      <p>Profesor: {{curso.profesor}}</p>
-      <p>Comisión: {{curso.comision}}</p>
-      <p>Fecha de inicio: {{curso.fechaInicio}}</p>
-      <p>Fecha de finalización: {{curso.fechaFin}}</p>
+      <p><span>Curso de:</span> {{course.course}}</p>
+      <p><span>Profesor:</span> {{course.teacher}}</p>
+      <p><span>Comisión:</span> {{course.commission}}</p>
+      <p><span>Inicio:</span>{{course.start}}</p>
+      <p><span>Fin:</span>{{course.end}}</p>
     </mat-card-content>
+    <button mat-button class="card-button-students">Ver Alumnos Inscriptos</button>
     <mat-card-actions>
-      <button (click)="editCurso()" mat-button class="card-button-edit">Editar</button>
-      <button (click)="deleteCurso(curso.id)" mat-button class="card-button-delete">Eliminar</button>
+      <button (click)="editCourse(course.id, course)" mat-button class="card-button-edit">Editar</button>
+      <button (click)="deleteCourse(course.id, course.commission)" mat-button class="card-button-delete">Eliminar</button>
     </mat-card-actions>
   </mat-card>
 </div>

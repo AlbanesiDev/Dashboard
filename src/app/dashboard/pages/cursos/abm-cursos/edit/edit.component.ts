@@ -1,51 +1,63 @@
-import { Component } from '@angular/core';
-import { FormControl, Validators, FormGroup } from '@angular/forms';
-import { MatDialogRef } from '@angular/material/dialog';
-import { Profesor } from '../../../profesores/profesores.component';
-import { ProfesoresService } from '../../../profesores/services/profesores.service';
-import { AddComponent } from '../add/add.component';
-
+import { Component, OnInit, Inject } from '@angular/core';
+import { FormControl, Validators, FormGroup, FormBuilder } from '@angular/forms';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { CoursesServices } from 'src/app/core/services/courses.service';
+import { TeachersServices } from 'src/app/core/services/teachers.service';
+import { Courses } from 'src/app/core/models/Courses';
 @Component({
-  selector: 'app-edit',
-  templateUrl: './edit.component.html',
-  styleUrls: ['./edit.component.scss']
+    selector: 'app-edit',
+    templateUrl: './edit.component.html',
+    styleUrls: ['./edit.component.scss']
 })
-export class EditComponent {
-    profesorControl = new FormControl('', [Validators.required]);
+export class EditComponent implements OnInit {
+    
+    teachersControl = new FormControl('', [Validators.required]);
     courseControl = new FormControl('', [Validators.required]);
-    comisionControl = new FormControl('', [Validators.required]);
+    commissionControl = new FormControl('', [Validators.required]);
     dateStartControl = new FormControl('', [Validators.required]);
     dateEndControl = new FormControl('', [Validators.required]);
 
-    courses: string[] = ['Desarrollo Web', 'Javascript', 'Angular', 'React', 'Vue'];
-    comisions: number[] = [33210, 40300, 12023, 13420, 13420]
-    profesores: Profesor[] = [];
+    courseNames: string[] = ['Desarrollo Web', 'Javascript', 'Angular', 'React', 'Vue', 'UX/UI'];
+    teachers: string[] = [];
+
 
     registerForm = new FormGroup({
-        profesor: this.profesorControl,
         course: this.courseControl,
-        comisions: this.comisionControl,
+        commission: this.commissionControl,
+        teacher: this.teachersControl,
         start: this.dateStartControl,
         end: this.dateEndControl,
     });
-
-
+    
     constructor(
-        private matDialogRef: MatDialogRef<AddComponent>,
-        private profesoresService: ProfesoresService
-    ) {
-        this.profesoresService.obtenerProfesores().subscribe((firstName: Profesor[]) => {
-            this.profesores = firstName;
+        private matDialogRef: MatDialogRef<EditComponent>,
+        private fb: FormBuilder,
+        private teacherService: TeachersServices,
+        @Inject(MAT_DIALOG_DATA) public course: Courses
+    ) { }
+
+    ngOnInit(): void {
+        this.teacherService.getTeachers().subscribe(
+            (teachers) => {
+                this.teachers = teachers.map((teacher) => teacher.firstName + ' ' + teacher.lastName);
+            }
+        );
+        this.registerForm = this.fb.group({
+            course: [this.course.course, Validators.required],
+            commission: [this.course.commission, Validators.required],
+            teacher: [this.course.teacher, Validators.required],
+            start: [this.course.start, Validators.required],
+            end: [this.course.end, Validators.required]
         });
     }
 
     save(): void {
         if (this.registerForm.valid) {
             this.matDialogRef.close(this.registerForm.value);
-            console.log(this.registerForm.value);
-        }
-        else {
-            this.registerForm.markAllAsTouched();
         }
     }
+
+    cancel(): void {
+        this.matDialogRef.close();
+    }   
 }

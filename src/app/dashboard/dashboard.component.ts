@@ -49,7 +49,7 @@ export class DashboardComponent implements OnDestroy {
   }
 
   Userlogout(): void {
-    this.authService.Userlogout();
+    this.authService.UserLogout();
   }
 }
 

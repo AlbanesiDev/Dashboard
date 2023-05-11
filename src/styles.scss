@@ -1,4 +1,14 @@
-/* You can add global styles to this file, and also import other style files */
+// Abstracts
+@import 'style/abstracts/mixins';
+@import 'style/abstracts/variables';
+// Base
+@import 'style/base/reset';
+@import 'style/base/typography';
+// Components
+@import 'style/components/button';
+@import 'style/components/card';
+@import 'style/components/form';
+// Themes
+@import 'style/themes/dark-theme';
+@import 'style/themes/light-theme';
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif;}

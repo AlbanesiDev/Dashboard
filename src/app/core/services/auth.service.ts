@@ -19,7 +19,7 @@ export class AuthService {
     return this.authUser$.asObservable();
   }
   
-  Userlogin(formValue: Login): void {
+  UserLogin(formValue: Login): void {
     this.httpClient
       .get<Register[]>(`${enviroment.apiBaseUrl}/Users`, {
         params: {
@@ -40,7 +40,7 @@ export class AuthService {
       });
   }
 
-  Userlogout(): void {
+  UserLogout(): void {
     localStorage.removeItem('token');
     this.authUser$.next(null);
     this.router.navigate(['auth']);

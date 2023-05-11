@@ -3,20 +3,18 @@
         <mat-icon>warning</mat-icon>
         <div class="container-dialog">
             <h2>¡Esta a punto de eliminar un curso!</h2>
-            <span>Para confirmar escribe el numero de la comision<strong> {{comision}} </strong></span>
+            <span>Esta acción es irreversible, para confirmar escribe el número de la comisión:<strong> {{data.commission}} </strong></span>
             <br>
             <form [formGroup]="registerForm">
                 <mat-form-field class="d-flex mt-1">
-                    <input type="number" matInput [formControl]="comisionDeleteFormControl">
-                    <mat-error *ngIf="comisionDeleteFormControl.hasError('required')">
-                    El numero de la comision es <strong>requerido</strong> para elimnar
-                    </mat-error>
+                    <input type="number" matInput [formControl]="commissionDeleteFormControl">
+                    <mat-error *ngIf="commissionDeleteFormControl.hasError('required')">El numero de la comision es <strong>requerido</strong> para elimnar</mat-error>
                 </mat-form-field>
             </form>
         </div>
     </div>
 </div>
 <div mat-dialog-actions class="options">
-    <button mat-dialog-close mat-flat-button class="btn-no">No</button>
-    <button (click)="delete()" mat-flat-button class="btn-yes">Si</button>
+    <button (click)="cancel()" mat-dialog-close mat-flat-button class="btn-no">No</button>
+    <button (click)="deletes()" mat-flat-button class="btn-yes">Si</button>
 </div>

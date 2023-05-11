@@ -1,52 +1,66 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { Courses } from 'src/app/core/models/Courses';
+import { CoursesServices } from 'src/app/core/services/courses.service';
 import { AddComponent } from './abm-cursos/add/add.component';
-import { DeleteComponent } from './abm-cursos/delete/delete.component';
 import { EditComponent } from './abm-cursos/edit/edit.component';
-import { CursosService } from './services/cursos.service';
+import { DeleteComponent } from './abm-cursos/delete/delete.component';
 
 @Component({
   selector: 'app-cursos',
   templateUrl: './cursos.component.html',
   styleUrls: ['./cursos.component.scss']
 })
-export class CursosComponent { 
 
-  cursos: { id: number; nombre: string; imagen: string; comision: string; profesor: string; fechaInicio: string; fechaFin: string; }[] = [];
-
-
+export class CursosComponent implements OnInit {
+  courses: Courses[] = [];
   constructor(
+    private courseService: CoursesServices,
     private matDialog: MatDialog,
-    private cursoService: CursosService
-  ) {
-    this.cursos = this.cursoService.cursos;
-  } 
+  ) { }
 
-  createCurso(): void {
-    const dialog = this.matDialog.open(AddComponent);
+  ngOnInit(): void {
+    this.courseService.getCourses().subscribe((courses) => (this.courses = courses));
+  }
 
-    dialog.afterClosed().subscribe((value) => {
-      if (value) {
-        this.cursos.push({
-          ...value,
-          id: this.cursos[this.cursos.length - 1].id + 1
+  createCourse(): void {
+    const dialogRef = this.matDialog.open(AddComponent);
+    dialogRef.afterClosed().subscribe((newCourse) => {
+      if (newCourse) {
+        this.courseService.createCourse(newCourse).subscribe((createdCourse) => {
+          this.courses.push(createdCourse);
         });
       }
     });
   }
 
-  editCurso(): void {
-    const dialog = this.matDialog.open(EditComponent);
-  }
-
-  deleteCurso(id: number): void {  
-    const dialog = this.matDialog.open(DeleteComponent);
-
-    dialog.afterClosed().subscribe((value) => {
-      if(value) {
-        this.cursos = this.cursos.filter((cursos) => {
-        return cursos.id !== id;});
+  editCourse(id: number, course: Courses): void {
+    const dialogRef = this.matDialog.open(EditComponent, {
+      data: course
+    });
+    dialogRef.afterClosed().subscribe((editCourse) => {
+      if (editCourse) {
+        this.courseService.editCourse(editCourse).subscribe((result) => {
+          const index = this.courses.findIndex(c => c.id === editCourse.id);
+          if (index !== -1) {
+            this.courses[index] = editCourse;
+          }
+        });
       }
-    })
+    });
   }
+
+
+  deleteCourse(id: number, commission: string): void {
+    const dialog = this.matDialog.open(DeleteComponent, {
+      data: { id, commission }
+    });
+    dialog.afterClosed().subscribe((result) => {
+      if (result) {
+        this.courseService.deleteCourse(id).subscribe(() => {
+          this.courses = this.courses.filter((course) => course.id !== id);
+        });
+      }
+    });
+  }  
 }
