@@ -13,7 +13,7 @@ import { PipesModule } from 'src/app/shared/pipes/pipes.module';
     CursosComponent,
     AddComponent,
     DeleteComponent,
-    EditComponent
+    EditComponent,
   ],
   imports: [
     CommonModule,

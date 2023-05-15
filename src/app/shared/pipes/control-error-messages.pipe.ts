@@ -6,7 +6,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class ControlErrorsPipe implements PipeTransform {
 
   transform(error: any, ...args: unknown[]): unknown {
-    if (!error) return '';
+    if (!error || !error.value) return '';
 
     let defaultMsg = 'Error desconocido';
 

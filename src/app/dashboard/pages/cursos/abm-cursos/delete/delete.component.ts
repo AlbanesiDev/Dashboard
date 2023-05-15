@@ -30,6 +30,11 @@ export class DeleteComponent implements OnInit {
     } else {
       this.registerForm.markAllAsTouched();
     }
+    if (this.registerForm.valid && this.data.commission != this.commissionDeleteFormControl.value) {
+      console.log('funciona')
+    } else {
+      this.registerForm.markAllAsTouched();
+    }
   }
   
   

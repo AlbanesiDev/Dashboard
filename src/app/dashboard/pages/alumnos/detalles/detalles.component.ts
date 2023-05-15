@@ -1,6 +1,6 @@
 import { Component, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { Alumno } from '../alumnos.component';
+import { Students } from 'src/app/core/models/Students';
 
 
 @Component({
@@ -11,7 +11,7 @@ import { Alumno } from '../alumnos.component';
 export class DetallesComponent {
   constructor(
     public dialogRef: MatDialogRef<DetallesComponent>,
-    @Inject(MAT_DIALOG_DATA) public alumno: Alumno
+    @Inject(MAT_DIALOG_DATA) public student: Students
   ) {}
 
   close(): void {

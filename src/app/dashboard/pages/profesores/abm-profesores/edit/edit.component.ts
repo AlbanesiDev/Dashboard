@@ -1,7 +1,6 @@
 import { Component, Inject } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-edit',
@@ -29,16 +28,16 @@ export class EditComponent {
 
   constructor(private matDialogRef: MatDialogRef<EditComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any) { 
-    this.firstNameControl.setValue(this.data.profesor.firstName); 
-    this.lastNameControl.setValue(this.data.profesor.lastName); 
-    this.courseControl.setValue(this.data.profesor.course); 
-    this.comisionControl.setValue(this.data.profesor.comision); 
-    this.emailControl.setValue(this.data.profesor.email); 
+    this.firstNameControl.setValue(this.data.teacher.firstName); 
+    this.lastNameControl.setValue(this.data.teacher.lastName); 
+    this.courseControl.setValue(this.data.teacher.course); 
+    this.comisionControl.setValue(this.data.teacher.comision); 
+    this.emailControl.setValue(this.data.teacher.email); 
   }
 
   save(): void{
     if(this.registerForm.valid){
-      this.idControl.setValue(this.data.profesor.id);
+      this.idControl.setValue(this.data.teacher.id);
       this.matDialogRef.close(this.registerForm.value);
     }
     else{

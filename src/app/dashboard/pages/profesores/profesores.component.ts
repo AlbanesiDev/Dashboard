@@ -5,16 +5,8 @@ import { AddComponent } from './abm-profesores/add/add.component';
 import { EditComponent } from './abm-profesores/edit/edit.component';
 import { DeleteComponent } from './abm-profesores/delete/delete.component';
 import { DetallesComponent } from './detalles/detalles.component';
-import { ProfesoresService } from './services/profesores.service';
-
-export interface Profesor{
-  id: number;
-  firstName: string;
-  lastName: string;
-  course: string;
-  comision: number;
-  email: string;
-}
+import { TeachersServices } from 'src/app/core/services/teachers.service';
+import { Teachers } from 'src/app/core/models/Teachers';
 
 @Component({
   selector: 'app-profesores',
@@ -23,59 +15,68 @@ export interface Profesor{
 })
 
 export class ProfesoresComponent {  
-  displayedColumns: string[] = ['id', 'fullName', 'course', 'comision', 'email', 'info', 'edit', 'delete'];
+  displayedColumns: string[] = ['id', 'fullName', 'course', 'commission', 'email', 'info', 'edit', 'delete'];
 
-  dataSource = new MatTableDataSource<Profesor>();
+  dataSource = new MatTableDataSource<Teachers>();
 
   constructor(
     private matDialog: MatDialog,
-    private profesoresServices: ProfesoresService
+    private teachersServices: TeachersServices
     ) {
-      this.profesoresServices.obtenerProfesores()
-      .subscribe((profesores) => {
-        this.dataSource.data = profesores;
-      })
+      this.teachersServices.getTeachers().subscribe((teachers) => {
+        this.dataSource.data = teachers;
+      });
     }
 
-  openDetallesDialog(profesor: Profesor): void {
+  openDetallesDialog(teacher: Teachers): void {
     this.matDialog.open(DetallesComponent, {
-      data: profesor
+      data: teacher
     });
   }
 
-  createProfesor(): void{
+  createTeacher(): void{
     const dialog = this.matDialog.open(AddComponent);
     dialog.afterClosed().subscribe((value) => {
       if(value){
-        this.dataSource.data = [...this.dataSource.data, {
-          ...value,
-          id: this.dataSource.data[this.dataSource.data.length-1].id + 1
-        }];
+        this.teachersServices.createTeacher(value).subscribe((teacher) => {
+          this.dataSource.data = [...this.dataSource.data, {
+            ...teacher,
+            id: this.dataSource.data[this.dataSource.data.length - 1].id + 1
+          }];
+        });
       }
     });
   }
 
-  edit(profesor: Profesor): void{
+  edit(teacher: Teachers): void{
     const dialog = this.matDialog.open(EditComponent, {
       data: {
-        profesor
+        teacher
       }
     });
     dialog.afterClosed().subscribe((value) => {
       if(value){
-        let index = this.dataSource.data.findIndex(item => item.id === profesor.id);
-        this.dataSource.data[index] = value;
-        this.dataSource.data = this.dataSource.data;
+        this.teachersServices.editTeacher(value)
+        .subscribe(() => {
+          let index = this.dataSource.data.findIndex(item => item.id === value.id);
+          this.dataSource.data[index] = value;
+          this.dataSource.data = this.dataSource.data;
+        });
       }
     });
   }
+  
 
   delete(id: number): void{
     const dialog = this.matDialog.open(DeleteComponent);
     dialog.afterClosed().subscribe((value) => {
       if(value){
-        this.dataSource.data = this.dataSource.data.filter((profesor) => {
-          return profesor.id !== id;});
+        const teacher = this.dataSource.data.find(a => a.id === id);
+        if (teacher) {
+          this.teachersServices.deleteTeacher(teacher).subscribe(() => {
+            this.dataSource.data = this.dataSource.data.filter(a => a.id !== id);
+          });
+        }
       }
     });
   }

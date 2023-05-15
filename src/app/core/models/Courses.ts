@@ -1,6 +1,6 @@
 export interface Courses { 
     id: number; 
-    img: string; 
+    imagePath: string;
     course: string; 
     teacher: string; 
     commission: string; 

@@ -1,7 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { FormControl, Validators, FormGroup, FormBuilder } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { CoursesServices } from 'src/app/core/services/courses.service';
 import { TeachersServices } from 'src/app/core/services/teachers.service';
 import { Courses } from 'src/app/core/models/Courses';
 @Component({
@@ -48,10 +47,11 @@ export class EditComponent implements OnInit {
             teacher: [this.course.teacher, Validators.required],
             start: [this.course.start, Validators.required],
             end: [this.course.end, Validators.required]
-        });
+        });        
     }
 
     save(): void {
+        console.log('xd')
         if (this.registerForm.valid) {
             this.matDialogRef.close(this.registerForm.value);
         }

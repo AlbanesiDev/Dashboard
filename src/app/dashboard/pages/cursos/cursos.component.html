@@ -10,7 +10,7 @@
 </div>
 <div class="card-container">
   <mat-card class="card-cursos" *ngFor="let course of courses">
-    <img mat-card-image src="{{course.img}}" alt="{{course.course}}">
+    <img mat-card-image [src]="course.imagePath" alt="{{course.course}}">
     <mat-card-content>
       <p><span>Curso de:</span> {{course.course}}</p>
       <p><span>Profesor:</span> {{course.teacher}}</p>
@@ -18,9 +18,9 @@
       <p><span>Inicio:</span>{{course.start}}</p>
       <p><span>Fin:</span>{{course.end}}</p>
     </mat-card-content>
-    <button mat-button class="card-button-students">Ver Alumnos Inscriptos</button>
+    <button (click)="viewStudents()" mat-button class="card-button-students">Ver Alumnos Inscriptos</button>
     <mat-card-actions>
-      <button (click)="editCourse(course.id, course)" mat-button class="card-button-edit">Editar</button>
+      <button (click)="editCourse(course.id, course.course)" mat-button class="card-button-edit">Editar</button>
       <button (click)="deleteCourse(course.id, course.commission)" mat-button class="card-button-delete">Eliminar</button>
     </mat-card-actions>
   </mat-card>
