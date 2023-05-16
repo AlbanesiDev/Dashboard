@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, CanActivate, RouterStateSnapshot, UrlTree } from '@angular/router';
+import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
 import { Observable, map } from 'rxjs';
 import { AuthService } from 'src/app/core/services/auth.service';
 import Swal from 'sweetalert2';
@@ -8,15 +8,18 @@ import Swal from 'sweetalert2';
     providedIn: 'root'
 })
 export class AdminGuard implements CanActivate {
-    constructor(private authService: AuthService) { }
+    constructor(
+        private authService: AuthService,
+        private router: Router
+        ) { }
 
     canActivate(
         route: ActivatedRouteSnapshot,
         state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
         return this.authService.getUserAuthenticated()
         .pipe(
-            map((usuarioAutenticado) => {
-                if (usuarioAutenticado?.role !== 'Administrador') {
+            map((UserAuthenticated) => {
+                if (UserAuthenticated?.role !== 'Administrador') {
                     this.invalidRole()
                     return false;
                 } else {
@@ -31,6 +34,8 @@ export class AdminGuard implements CanActivate {
             title: 'No tienes los permisos suficientes para acceder a esta ruta',
             icon: 'error',
             showConfirmButton: true,
+            }).then(() => {
+            this.router.navigate(['/dashboard']);
         });
     }
 }

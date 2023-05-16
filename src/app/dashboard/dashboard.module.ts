@@ -20,6 +20,7 @@ import { ProfesoresModule } from './pages/profesores/profesores.module';
 import { ProfesoresComponent } from './pages/profesores/profesores.component';
 import { InscripcionesModule } from './pages/inscripciones/inscripciones.module';
 import { InscripcionesComponent } from './pages/inscripciones/inscripciones.component';
+import { AdminGuard } from '../auth/guards/admin.guard';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { InscripcionesComponent } from './pages/inscripciones/inscripciones.comp
     RouterModule.forChild([
       {
         path: 'profesores',
+        canActivate: [AdminGuard],
         component: ProfesoresComponent
       },
       {
@@ -47,6 +49,7 @@ import { InscripcionesComponent } from './pages/inscripciones/inscripciones.comp
       },
       {
         path: 'cursos',
+        canActivate: [AdminGuard],
         component: CursosComponent
       },
       {

@@ -72,9 +72,9 @@ export class AuthService {
     );
   }
 
-  UserRegister(user: Register): void {
+  UserRegister(Usuarios: Register): void {
     this.httpClient
-      .post<Register>(`${enviroment.apiBaseUrl}/Users`, user)
+      .post<Register>(`${enviroment.apiBaseUrl}/Users`, Usuarios)
       .subscribe(() => {
         this.showRegistrationSuccessful();
       });
