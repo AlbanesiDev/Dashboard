@@ -5,11 +5,11 @@ import { Login } from "src/app/core/models/Login";
 export const USER_ADMIN_MOCK: Register = {
   id: 1,
   firstName: 'Test',
-  lastName: 'TestAdmin',
+  lastName: 'Admin',
   email: 'TestAdmin@mail.com',
   password: '12345678',
   token: 's3mgTAC6z8Z6YyiJR5Th7Gky2ZkTQIlbPM0lpE0u',
-  rol: 'admin'
+  role: "Administrador",
 }
 
 export class AuthServiceMock {

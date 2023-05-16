@@ -5,5 +5,5 @@ export interface Register {
     email: string;
     password: string;
     token: string;
-    rol: string;
+    role: string;
 }

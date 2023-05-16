@@ -1,34 +1,34 @@
-type NavItem = {
-    path: string;
-    title: string;
+export interface NavItem {
+  path: string;
+  title: string;
+  allowedRoles: string[];
+}
+
+export const profesores: NavItem[] = [
+  {
+    path: 'profesores',
+    title: 'Profesores',
+    allowedRoles: ['Administrador'],
   }
-  
-  const profesores: NavItem[] = [
-    {
-      path: 'profesores',
-      title: 'Profesores',
-    }
-  ]
-  
-  const estudiantes: NavItem[] = [
-    {
-      path: 'alumnos',
-      title: 'Alumnos',
-    },
-    {
-      path: 'inscripciones',
-      title: 'Inscripciones',
-    },
-  ]
-  
-  const cursos: NavItem[] = [
-    {
-      path: 'cursos',
-      title: 'Cursos',
-    },
-  ]
-  
-  export { profesores, estudiantes, cursos };
-  
-  
-  
+]
+
+export const estudiantes: NavItem[] = [
+  {
+    path: 'alumnos',
+    title: 'Alumnos',
+    allowedRoles: [''],
+  },
+  {
+    path: 'inscripciones',
+    title: 'Inscripciones',
+    allowedRoles: [''],
+  },
+]
+
+export const cursos: NavItem[] = [
+  {
+    path: 'cursos',
+    title: 'Cursos',
+    allowedRoles: ['Administrador'],
+  },
+]

@@ -35,6 +35,9 @@
                 border: 5px solid #212121;
             }
         }
+        .user-name {
+            margin: 20px;
+        }
 
     }
 }
@@ -78,12 +81,12 @@ h2{
 .btn-verHora {
     width: 230px;
     position: absolute;
-    bottom: 135px;
+    bottom: 45px;
 }
 
 .btn-cerrarSesion {
     width: 230px;
     position: absolute;
-    bottom: 90px;
+    bottom: 0px;
     background-color: #2b5be0 !important;
 }

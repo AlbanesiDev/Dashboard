@@ -1,29 +1,45 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
+import { CoursesServices } from 'src/app/core/services/courses.service';
 @Component({
     selector: 'app-add',
     templateUrl: './add.component.html',
     styleUrls: ['./add.component.scss']
 })
-export class AddComponent {
+export class AddComponent implements OnInit {
+
     firstNameControl = new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(15)]);
     lastNameControl = new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(15)]);
-    courseControl = new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(14)]);
-    comisionControl = new FormControl('', [Validators.required, Validators.minLength(4)]);
+    courseControl = new FormControl('', [Validators.required]);
     emailControl = new FormControl('', [Validators.required, Validators.email]);
+
     courses: string[] = ['Desarrollo Web', 'Javascript', 'Angular', 'React', 'Vue', 'UX/UI'];
-    comisions: number[] = [33210, 40300, 12023, 13420, 13420]
+    commission: any[] = []
 
     registerForm = new FormGroup({
         firstName: this.firstNameControl,
         lastName: this.lastNameControl,
         course: this.courseControl,
-        comision: this.comisionControl,
         email: this.emailControl,
     });
 
-    constructor(private matDialogRef: MatDialogRef<AddComponent>) {
+    constructor(
+        private matDialogRef: MatDialogRef<AddComponent>,
+        private courseService: CoursesServices,
+        ) {
+    }
+
+    ngOnInit(): void {
+        console.log(this.commission)
+        this.courseService.getCourses().subscribe(
+            (courses) => {
+                this.courses = courses.map((courses) => courses.course + ' ' + courses.commission);
+            }
+        );
+        this.courseService.getCourses().subscribe((courses) => {
+            this.commission = courses.map((course) => course.commission)
+        });
     }
 
     save(): void {

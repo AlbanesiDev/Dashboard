@@ -12,12 +12,16 @@
       <div class="user-profile">
         <img src="assets/user/avatar.webp" alt="user_profile">
       </div>
-
+      <hr>
+      <div class="user-name">
+        <p>{{ getFullName(authUser$ | async) }}</p>
+        <p [ngStyle]="getRoleStyles(authUser$ | async)">{{ (authUser$ | async)?.role }}</p>
+      </div>
       <hr>
 
       <mat-accordion class="accordion-container">
 
-        <mat-expansion-panel class="accordion">
+        <mat-expansion-panel class="accordion" *ngIf="verifyRole(linksProfesores[0]) | async">
           <mat-expansion-panel-header>
             <mat-panel-title class="accordion-title"> Profesores </mat-panel-title>
           </mat-expansion-panel-header>
@@ -31,16 +35,11 @@
           <button mat-flat-button class="accent-color" [routerLink]="link.path" *ngFor="let link of linksEstudiantes">{{ link.title }}</button>
         </mat-expansion-panel>
   
-        <mat-expansion-panel class="accordion">
+        <mat-expansion-panel class="accordion" *ngIf="verifyRole(linksCursos[0]) | async">
           <mat-expansion-panel-header>
             <mat-panel-title class="accordion-title"> Cursos </mat-panel-title>
           </mat-expansion-panel-header>
           <button mat-flat-button class="accent-color" [routerLink]="link.path" *ngFor="let link of linksCursos">{{ link.title }}</button>
-          <button mat-flat-button >Desarrollo Web</button>
-          <button mat-flat-button>Javascript</button>
-          <button mat-flat-button>React</button>
-          <button mat-flat-button>Angular</button>
-          <button mat-flat-button>Vue</button>
         </mat-expansion-panel>
 
         <button (click)="toggleMostrarHora()" mat-flat-button class="accordion btn-verHora">{{verHora}}</button>

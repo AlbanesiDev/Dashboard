@@ -1,8 +1,8 @@
 import { Component, OnDestroy } from '@angular/core';
 import { Time } from '@angular/common';
-import { Observable, Subject } from 'rxjs';
+import { Observable, Subject, map } from 'rxjs';
 import { Register } from '../core/models/Register';
-import { cursos, estudiantes, profesores } from '../core/models/Links';
+import { NavItem, cursos, estudiantes, profesores } from '../core/models/Links';
 import { TimeService } from '../core/services/time.service';
 import { AuthService } from '../core/services/auth.service';
 
@@ -43,6 +43,24 @@ export class DashboardComponent implements OnDestroy {
     this.verHora = this.mostrarHora ? 'Ocultar hora' : 'Ver hora';
   }
 
+  getFullName(user: Register | null): string {
+    if (user) {
+      return user.firstName + ' ' + user.lastName;
+    }
+    return '';
+  }
+
+  getRoleStyles(user: Register | null): any {
+    if (user) {
+      if (user.role === 'Administrador') {
+        return { color: '#fc3f3f' };
+      } else if (user.role === 'Usuario') {
+        return { color: '#7f4edb' };
+      }
+    }
+    return {};
+  }
+
   ngOnDestroy(): void {
     this.destroyed$.next();
     this.destroyed$.complete();
@@ -51,6 +69,18 @@ export class DashboardComponent implements OnDestroy {
   Userlogout(): void {
     this.authService.UserLogout();
   }
+  
+  verifyRole(link: NavItem): Observable<boolean> {
+    return this.authUser$.pipe(
+      map((user: Register | null) => {
+        if (user && link.allowedRoles.length > 0) {
+          return link.allowedRoles.includes(user.role);
+        }
+        return true;
+      })
+    );
+  }
+  
 }
 
 

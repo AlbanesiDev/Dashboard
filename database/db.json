@@ -1,21 +1,21 @@
 {
   "Users": [
     {
-      "id": 1,
       "firstName": "Joaquin",
       "lastName": "Albanesi",
-      "email": "JoaquinAlbanesiDev@gmail.com",
+      "email": "adminExample@email.com",
       "password": "12345678",
       "token": "aiusdhiuewhrokenJH2H91HOASNDO1lkhas8d92k",
-      "role": "admin"
+      "role": "Administrador",
+      "id": 1
     },
     {
-      "firstName": "user",
+      "firstName": "User",
       "lastName": "Example",
-      "email": "email@example.com",
+      "email": "userExample@email.com",
       "password": "12345678",
       "token": "aosijd1029j3jasdolj12oi3j129ud9sajhd9w8h",
-      "rol": "user",
+      "role": "Usuario",
       "id": 2
     }
   ],
@@ -67,6 +67,14 @@
       "comision": 13420,
       "email": "example@abc",
       "id": 6
+    },
+    {
+      "firstName": "Sergio",
+      "lastName": "Segarra",
+      "course": "React",
+      "comision": 33210,
+      "email": "example@abc",
+      "id": 7
     }
   ],
   "Students": [
@@ -101,6 +109,14 @@
       "note": 10,
       "email": "example@abc",
       "id": 4
+    },
+    {
+      "firstName": "Soledad",
+      "lastName": "Cuenca",
+      "course": "Vue",
+      "note": 0,
+      "email": "example@abc",
+      "id": 5
     }
   ],
   "registered": [
@@ -150,22 +166,49 @@
       "end": "15/05/2023"
     },
     {
-      "course": "React",
-      "commission": "10990",
-      "teacher": "Estela Avila",
-      "start": "02/05/2023",
-      "end": "16/05/2023",
-      "imagePath": "assets/Cards/React.png",
-      "id": 4
+      "course": "UX/UI",
+      "commission": "69913",
+      "teacher": "Reyes  Bartolome",
+      "start": "01/05/2023",
+      "end": "01/11/2023",
+      "imagePath": "assets/Cards/ui-ux.png",
+      "id": 6
     },
     {
-      "course": "Javascript",
-      "commission": "54683",
-      "teacher": "Amelia Mayo",
-      "start": "01/05/2023",
-      "end": "18/05/2023",
-      "imagePath": "assets/Cards/Javascript.png",
-      "id": 5
+      "course": "React",
+      "commission": "34123",
+      "teacher": "Cynthia Paz",
+      "start": "15/05/2023",
+      "end": "15/12/2023",
+      "imagePath": "assets/Cards/React.png",
+      "id": 7
+    },
+    {
+      "course": "Vue",
+      "commission": "47216",
+      "teacher": "Abdelaziz Granados",
+      "start": "15/03/2023",
+      "end": "15/10/2023",
+      "imagePath": "assets/Cards/Vue.png",
+      "id": 8
+    },
+    {
+      "course": "Desarrollo Web",
+      "commission": "81969",
+      "teacher": "Alain Corrales",
+      "start": "01/07/2023",
+      "end": "20/09/2023",
+      "imagePath": "assets/Cards/DesarrolloWeb.png",
+      "id": 9
+    },
+    {
+      "course": "UX/UI",
+      "commission": "94821",
+      "teacher": "Cynthia Paz",
+      "start": "15/12/2023",
+      "end": "30/04/2024",
+      "imagePath": "assets/Cards/ui-ux.png",
+      "id": 10
     }
   ],
   "imageOptions": [

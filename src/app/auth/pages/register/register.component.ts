@@ -31,7 +31,7 @@ export class RegisterComponent {
       this.authService.UserRegister({       
         ...this.registerForm.value as Register,
         token: this.generateToken(),
-        rol: 'user'
+        role: 'Usuario'
       });
       this.router.navigate(['/login']);
     }
