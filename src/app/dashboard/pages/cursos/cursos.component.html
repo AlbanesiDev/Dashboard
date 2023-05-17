@@ -18,7 +18,7 @@
       <p><span>Inicio:</span>{{course.start}}</p>
       <p><span>Fin:</span>{{course.end}}</p>
     </mat-card-content>
-    <button (click)="viewStudents()" mat-button class="card-button-students">Ver Alumnos Inscriptos</button>
+    <button (click)="viewStudents(course.course, course.commission)" mat-button class="card-button-students">Ver Alumnos Inscriptos</button>
     <mat-card-actions>
       <button (click)="editCourse(course)" mat-button class="card-button-edit">Editar</button>
       <button (click)="deleteCourse(course.id, course.commission)" mat-button class="card-button-delete">Eliminar</button>

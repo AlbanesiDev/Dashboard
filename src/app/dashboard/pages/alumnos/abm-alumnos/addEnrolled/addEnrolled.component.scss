@@ -1,6 +1,17 @@
 .dialog-container {
-    margin: 20px;
     width: 600px;
+    margin: 20px;
+    .form-container {
+        display: flex;
+        justify-content: space-around;
+        .form_select {
+            width: 70%;
+            margin-right: 20px;
+        }
+        .form_input {
+            width: 30%;
+        }
+    }
     .dialog-button-cancel {
         button {
             width: 100%;

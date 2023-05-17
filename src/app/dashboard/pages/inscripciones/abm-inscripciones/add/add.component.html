@@ -22,22 +22,13 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-md-6">
-                <mat-form-field>
+            <div class="col-md-12">
+                <mat-form-field class="d-flex">
                     <mat-label>Curso:</mat-label>
                     <mat-select [formControl]="courseControl">
                         <mat-option *ngFor="let course of courses" [value]="course">{{ course }}</mat-option>
                     </mat-select>
                     <mat-error *ngFor="let error of courseControl.errors | keyvalue">{{error | controlErrors}}</mat-error>
-                </mat-form-field>
-            </div>
-            <div class="col-md-6">
-                <mat-form-field>
-                    <mat-label>Comision:</mat-label>
-                    <mat-select [formControl]="comisionControl">
-                        <mat-option *ngFor="let comision of comisions" [value]="comision">{{ comision }}</mat-option>
-                    </mat-select>
-                    <mat-error *ngFor="let error of comisionControl.errors | keyvalue">{{error | controlErrors}}</mat-error>
                 </mat-form-field>
             </div>
         </div>

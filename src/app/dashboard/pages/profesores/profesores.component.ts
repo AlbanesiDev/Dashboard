@@ -15,7 +15,7 @@ import { Teachers } from 'src/app/core/models/Teachers';
 })
 
 export class ProfesoresComponent {  
-  displayedColumns: string[] = ['id', 'fullName', 'course', 'commission', 'email', 'info', 'edit', 'delete'];
+  displayedColumns: string[] = ['id', 'fullName', 'course', 'email', 'info', 'edit', 'delete'];
 
   dataSource = new MatTableDataSource<Teachers>();
 

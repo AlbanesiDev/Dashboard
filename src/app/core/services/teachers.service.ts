@@ -9,7 +9,6 @@ import { Teachers } from "../models/Teachers";
 
 export class TeachersServices {
     private apiUrl = 'http://localhost:3000/teachers';
-    id: any;
     
     constructor (private http: HttpClient) { }
 
@@ -24,7 +23,7 @@ export class TeachersServices {
         return this.http.put(url, teacher);
     }
     deleteTeacher(teacher: Teachers): Observable<Teachers> {
-        const url = `${this.apiUrl}/${this.id}`;
+        const url = `${this.apiUrl}/${teacher.id}`;
         return this.http.delete<Teachers>(url);
     }
 }

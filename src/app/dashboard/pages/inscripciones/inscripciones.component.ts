@@ -5,93 +5,78 @@ import { AddComponent } from './abm-inscripciones/add/add.component';
 import { EditComponent } from './abm-inscripciones/edit/edit.component';
 import { DeleteComponent } from './abm-inscripciones/delete/delete.component';
 import { DetallesComponent } from './detalles/detalles.component';
-import { InscripcionesService } from './services/inscripciones.service';
+import { InscriptionsServices } from 'src/app/core/services/Inscription.service';
+import { Inscription } from 'src/app/core/models/Inscription';
 
-export interface Alumno {
-  id: number;
-  firstName: string;
-  lastName: string;
-  course: string;
-  comision: number;
-  email: string;
-}
 
 @Component({
-  selector: 'app-inscripciones',
+  selector: 'app-alumnos',
   templateUrl: './inscripciones.component.html',
-  styleUrls: ['./inscripciones.component.scss'],
+  styleUrls: ['./inscripciones.component.scss']
 })
-export class InscripcionesComponent {
-  displayedColumns: string[] = [
-    'id',
-    'fullName',
-    'course',
-    'comision',
-    'email',
-    'info',
-    'edit',
-    'delete',
-  ];
-  
 
-  dataSource = new MatTableDataSource<Alumno>();
+export class InscripcionesComponent {  
+
+  displayedColumns: string[] = ['id', 'fullName', 'course', 'email', 'info', 'edit', 'delete'];
+  
+  dataSource = new MatTableDataSource<Inscription>();
 
   constructor(
     private matDialog: MatDialog,
-    private inscripcionesService: InscripcionesService
-    ) {
-      this.inscripcionesService.obtenerInscripcion()
-      .subscribe((inscripciones) => {
-        this.dataSource.data = inscripciones;
-      })
-    }
-
-
-  openDetallesDialog(alumno: Alumno): void {
-    this.matDialog.open(DetallesComponent, {
-      data: alumno,
+    private inscriptionsServices: InscriptionsServices,
+  ) {
+    this.inscriptionsServices.getInscriptions().subscribe((enrolled) => {
+      this.dataSource.data = enrolled;
     });
   }
 
-  createAlumno(): void {
+  openDetallesDialog(enrolled: Inscription): void {
+    this.matDialog.open(DetallesComponent, {
+      data: enrolled
+    });
+  }
+
+  createInscriptions(): void {
     const dialog = this.matDialog.open(AddComponent);
     dialog.afterClosed().subscribe((value) => {
       if (value) {
-        this.dataSource.data = [
-          ...this.dataSource.data,
-          {
-            ...value,
-            id: this.dataSource.data[this.dataSource.data.length - 1].id + 1,
-          },
-        ];
+        this.inscriptionsServices.createInscription(value).subscribe((enrolled) => {
+          this.dataSource.data = [...this.dataSource.data, {
+            ...enrolled,
+            id: this.dataSource.data[this.dataSource.data.length - 1].id + 1
+          }];
+        });
       }
     });
   }
-
-  edit(alumno: Alumno): void {
+  
+  edit(enrolled: Inscription): void{
     const dialog = this.matDialog.open(EditComponent, {
       data: {
-        alumno,
-      },
+        enrolled
+      }
     });
     dialog.afterClosed().subscribe((value) => {
-      if (value) {
-        let index = this.dataSource.data.findIndex(
-          (item) => item.id === alumno.id
-        );
-        this.dataSource.data[index] = value;
-        this.dataSource.data = this.dataSource.data;
+      if(value){
+        this.inscriptionsServices.editInscription(value)
+        .subscribe(() => {
+          let index = this.dataSource.data.findIndex(item => item.id === value.id);
+          this.dataSource.data[index] = value;
+          this.dataSource.data = this.dataSource.data;
+        });
       }
     });
   }
-
-  delete(id: number): void {
+  delete(id: number): void{
     const dialog = this.matDialog.open(DeleteComponent);
     dialog.afterClosed().subscribe((value) => {
-      if (value) {
-        this.dataSource.data = this.dataSource.data.filter((alumno) => {
-          return alumno.id !== id;
-        });
+      if(value){
+        const enrolled = this.dataSource.data.find(a => a.id === id);
+        if (enrolled) {
+          this.inscriptionsServices.deleteInscription(enrolled).subscribe(() => {
+            this.dataSource.data = this.dataSource.data.filter(a => a.id !== id);
+          });
+        }
       }
     });
   }

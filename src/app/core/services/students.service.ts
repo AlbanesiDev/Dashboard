@@ -25,6 +25,5 @@ export class StudentsServices {
     deleteStudent(student: Students): Observable<Students> {
         const url = `${this.apiUrl}/${student.id}`;
         return this.http.delete<Students>(url);
-    
     }
 }

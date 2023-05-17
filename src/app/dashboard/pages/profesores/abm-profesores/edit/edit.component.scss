@@ -1,16 +1,19 @@
 .dialog-container {
     margin: 20px;
     .dialog-email {
+        width: 100%;
         display: flex;
     }
     .dialog-button-cancel {
         button {
+            width: 100%;
             color: white;
             background-color: #212121;
         }
     }
     .dialog-button-save {
         button {
+            width: 100%;
             color: white;
             background-color: #0d6efd;
         }

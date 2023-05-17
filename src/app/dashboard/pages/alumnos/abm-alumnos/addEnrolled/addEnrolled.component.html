@@ -1,0 +1,34 @@
+<div class="dialog-container">
+    <div class="row">
+        <div class="col-md-12">
+            <h2>Agregar Inscripto</h2>
+        </div>
+    </div>
+    <div>
+        <form [formGroup]="registerForm" class="form-container">
+            <mat-form-field class="form_select">
+                <mat-label>Alumno:</mat-label>
+                <mat-select formControlName="selectedEnrollment" name="selectedEnrollment">
+                    <mat-option *ngFor="let enrollment of enrolledList" [value]="enrollment">
+                        {{ enrollment.firstName }} {{ enrollment.lastName }} - {{ enrollment.course }}{{
+                        enrollment.commission }}
+                    </mat-option>
+                </mat-select>
+                <mat-error *ngFor="let error of selectControl.errors | keyvalue">{{error | controlErrors}}</mat-error>
+            </mat-form-field>
+            <mat-form-field class="form_input">
+                <mat-label>Calificación:</mat-label>
+                <input [formControl]="noteControl" type="number" matInput />
+                <mat-error *ngFor="let error of noteControl.errors | keyvalue">{{error | controlErrors}}</mat-error>
+            </mat-form-field>
+        </form>
+    </div>
+    <div class="row mt-4">
+        <div class="col-md-6 dialog-button-cancel">
+            <button mat-dialog-close mat-flat-button>Cancelar</button>
+        </div>
+        <div class="col-md-6 dialog-button-save">
+            <button (click)="save()" mat-flat-button>Guardar</button>
+        </div>
+    </div>
+</div>

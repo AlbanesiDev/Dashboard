@@ -39,14 +39,17 @@
             </div>
             <div class="col-md-6">
                 <mat-form-field appearance="fill">
+
                     <mat-label>Fecha de inicio y fin</mat-label>
                     <mat-date-range-input [formGroup]="registerForm" [rangePicker]="picker">
-                        <input matStartDate formControlName="start" placeholder="Inicio" [value]="dateStartControl.value">
-                        <input matEndDate formControlName="end" placeholder="Fin" [value]="dateEndControl.value">
+                        <input matStartDate formControlName="start" placeholder="Inicio" [value]="dateStartControl">
+                        <input matEndDate formControlName="end" placeholder="Fin" [value]="dateEndControl">
                     </mat-date-range-input>
+
                     <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint>
                     <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
                     <mat-date-range-picker #picker></mat-date-range-picker>
+
                     <mat-error *ngFor="let error of dateStartControl.errors | keyvalue">{{error | controlErrors}}</mat-error>
                 </mat-form-field>
             </div>

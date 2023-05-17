@@ -25,13 +25,8 @@
     </ng-container>
 
     <ng-container matColumnDef="course">
-      <th appTitles mat-header-cell *matHeaderCellDef>Curso</th>
+      <th appTitles mat-header-cell *matHeaderCellDef>Curso y Comisión</th>
       <td mat-cell *matCellDef="let teacher">{{ teacher.course }}</td>
-    </ng-container>
-
-    <ng-container matColumnDef="commission">
-      <th appTitles mat-header-cell *matHeaderCellDef>Comisión</th>
-      <td mat-cell *matCellDef="let teacher">{{ teacher.commission }}</td>
     </ng-container>
 
     <ng-container matColumnDef="email">

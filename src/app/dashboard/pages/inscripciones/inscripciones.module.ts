@@ -9,8 +9,6 @@ import { PipesModule } from 'src/app/shared/pipes/pipes.module';
 import { InscripcionesComponent } from './inscripciones.component';
 import { DetallesComponent } from './detalles/detalles.component';
 
-
-
 @NgModule({
   declarations: [
     InscripcionesComponent,

@@ -7,15 +7,8 @@ import { DeleteComponent } from './abm-alumnos/delete/delete.component';
 import { DetallesComponent } from './detalles/detalles.component';
 import { StudentsServices } from 'src/app/core/services/students.service';
 import { Students } from 'src/app/core/models/Students';
+import { AddEnrolledComponent } from './abm-alumnos/addEnrolled/addEnrolled.component';
 
-export interface Alumno{
-  id: number;
-  firstName: string;
-  lastName: string;
-  course: string;
-  note: number;
-  email: string;
-}
 @Component({
   selector: 'app-alumnos',
   templateUrl: './alumnos.component.html',
@@ -23,8 +16,9 @@ export interface Alumno{
 })
 
 export class AlumnosComponent {  
-  displayedColumns: string[] = ['id', 'fullName', 'course', 'commission', 'note', 'email', 'info', 'edit', 'delete'];
   
+  displayedColumns: string[] = ['id', 'fullName', 'course', 'note', 'email', 'info', 'edit', 'delete'];
+
   dataSource = new MatTableDataSource<Students>();
 
   constructor(
@@ -41,6 +35,22 @@ export class AlumnosComponent {
       data: student
     });
   }
+
+  addAlumno(): void {
+    const dialog = this.matDialog.open(AddEnrolledComponent, {
+    });
+    dialog.afterClosed().subscribe((value) => {
+      if (value) {
+        this.studentsService.createStudent(value).subscribe((student) => {
+          this.dataSource.data = [...this.dataSource.data, {
+            ...student,
+            id: this.dataSource.data[this.dataSource.data.length - 1].id + 1
+          }];
+        });
+      }
+    });
+  }
+
   createAlumno(): void {
     const dialog = this.matDialog.open(AddComponent);
     dialog.afterClosed().subscribe((value) => {

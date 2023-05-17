@@ -1,0 +1,34 @@
+<div class="table-header-container">
+    <div class="table-title">
+        <h1>Lista de Inscriptos</h1>
+    </div>
+</div>
+<div class="table-container">
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+        <ng-container matColumnDef="id">
+            <th appTitles mat-header-cell *matHeaderCellDef>Id.</th>
+            <td mat-cell *matCellDef="let alumno">{{ alumno.id }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="fullName">
+            <th appTitles mat-header-cell *matHeaderCellDef>Nombre Completo</th>
+            <td mat-cell *matCellDef="let alumno">{{ alumno | fullname }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="course">
+            <th appTitles mat-header-cell *matHeaderCellDef>Curso</th>
+            <td mat-cell *matCellDef="let alumno">{{ alumno.course }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="email">
+            <th appTitles mat-header-cell *matHeaderCellDef>Email</th>
+            <td mat-cell *matCellDef="let alumno">{{ alumno.email }}</td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+    <div *ngIf="dataSource.data.length === 0" class="no-data-message">
+        <p>No hay alumnos inscriptos a este curso</p>
+    </div>
+</div>

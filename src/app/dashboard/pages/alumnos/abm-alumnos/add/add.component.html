@@ -35,7 +35,7 @@
                 <mat-form-field>
                     <mat-label>Calificación:</mat-label>
                     <input [formControl]="noteControl" type="number" matInput />
-                    <mat-error *ngFor="let error of noteControl.errors | keyvalue">{{error | controlErrors}}</mat-error>
+                    <mat-error *ngFor="let error of courseControl.errors | keyvalue">{{error | controlErrors}}</mat-error>
                 </mat-form-field>
             </div>
         </div>

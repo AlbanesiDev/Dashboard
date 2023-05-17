@@ -7,20 +7,21 @@ import { DeleteComponent } from './abm-cursos/delete/delete.component';
 import { EditComponent } from './abm-cursos/edit/edit.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PipesModule } from 'src/app/shared/pipes/pipes.module';
-
+import { DetallesComponent } from './detalles/detalles.component';
 @NgModule({
   declarations: [
     CursosComponent,
     AddComponent,
     DeleteComponent,
     EditComponent,
+    DetallesComponent,
   ],
   imports: [
     CommonModule,
     AngularMaterialModule,
     ReactiveFormsModule,
     PipesModule,
-    FormsModule
+    FormsModule,
   ],
   exports: [
     CursosComponent

@@ -8,11 +8,14 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { AlumnosComponent } from './alumnos.component';
 import { PipesModule } from 'src/app/shared/pipes/pipes.module';
 import { DetallesComponent } from './detalles/detalles.component';
+import { AddEnrolledComponent } from './abm-alumnos/addEnrolled/addEnrolled.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     AlumnosComponent,
     AddComponent,
+    AddEnrolledComponent,
     EditComponent,
     DeleteComponent,
     DetallesComponent,
@@ -22,6 +25,7 @@ import { DetallesComponent } from './detalles/detalles.component';
     AngularMaterialModule,
     ReactiveFormsModule,
     PipesModule,
+    FormsModule,
   ],
   exports: [
     AlumnosComponent

@@ -3,8 +3,11 @@
         <h1>Lista de Alumnos</h1>
     </div>
     <div class="table-button">
+        <button (click)="addAlumno()" mat-flat-button class="me-3"><mat-icon>add</mat-icon>
+          Agregar alumno inscripto
+        </button>
         <button (click)="createAlumno()" mat-flat-button><mat-icon>add</mat-icon>
-          Agregar student
+          Agregar nuevo alumno
         </button>
     </div>
 </div>
@@ -22,13 +25,8 @@
     </ng-container>
 
     <ng-container matColumnDef="course">
-      <th appTitles mat-header-cell *matHeaderCellDef>Curso</th>
+      <th appTitles mat-header-cell *matHeaderCellDef>Curso y Comisión</th>
       <td mat-cell *matCellDef="let student">{{ student.course }}</td>
-    </ng-container>
-
-    <ng-container matColumnDef="commission">
-      <th appTitles mat-header-cell *matHeaderCellDef>Comision</th>
-      <td mat-cell *matCellDef="let student">{{ student.commission }}</td>
     </ng-container>
 
     <ng-container matColumnDef="note">

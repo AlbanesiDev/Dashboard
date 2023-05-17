@@ -14,7 +14,7 @@ export class AddComponent implements OnInit {
     courseControl = new FormControl('', [Validators.required]);
     emailControl = new FormControl('', [Validators.required, Validators.email]);
 
-    courses: string[] = ['Desarrollo Web', 'Javascript', 'Angular', 'React', 'Vue', 'UX/UI'];
+    courses: string[] = [];
     commission: any[] = []
 
     registerForm = new FormGroup({
@@ -31,7 +31,6 @@ export class AddComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        console.log(this.commission)
         this.courseService.getCourses().subscribe(
             (courses) => {
                 this.courses = courses.map((courses) => courses.course + ' ' + courses.commission);

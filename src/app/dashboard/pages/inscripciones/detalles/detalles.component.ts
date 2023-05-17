@@ -1,6 +1,7 @@
 import { Component, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { Alumno } from '../inscripciones.component';
+import { Inscription } from 'src/app/core/models/Inscription';
+
 @Component({
   selector: 'app-detalles',
   templateUrl: './detalles.component.html',
@@ -9,7 +10,7 @@ import { Alumno } from '../inscripciones.component';
 export class DetallesComponent {
   constructor(
     public dialogRef: MatDialogRef<DetallesComponent>,
-    @Inject(MAT_DIALOG_DATA) public alumno: Alumno
+    @Inject(MAT_DIALOG_DATA) public alumno: Inscription
   ) {}
   close(): void {
     this.dialogRef.close();
