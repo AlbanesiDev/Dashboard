@@ -32,7 +32,7 @@ describe('Pruebas del AuthService', () => {
         email: loginTest.email,
         password: loginTest.password,
         token: 'iA6rUahrvQOTMdXpKyWuHjO12LowOE7GQqxqfbi3',
-        rol: 'user'
+        role: 'Usuario'
       }
     ];
 
@@ -68,7 +68,7 @@ describe('Pruebas del AuthService', () => {
           email: loginTest.email,
           password: loginTest.password,
           token: 'iA6rUahrvQOTMdXpKyWuHjO12LowOE7GQqxqfbi3',
-          rol: 'user'
+          role: 'Usuario'
         },
       ];
 

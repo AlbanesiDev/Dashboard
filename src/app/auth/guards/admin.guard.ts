@@ -4,14 +4,15 @@ import { Observable, map } from 'rxjs';
 import { AuthService } from 'src/app/core/services/auth.service';
 import Swal from 'sweetalert2';
 
+
 @Injectable({
     providedIn: 'root'
 })
 export class AdminGuard implements CanActivate {
     constructor(
         private authService: AuthService,
-        private router: Router
-        ) { }
+        private router: Router,
+    ) { }
 
     canActivate(
         route: ActivatedRouteSnapshot,

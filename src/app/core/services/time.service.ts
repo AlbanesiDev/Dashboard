@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable, map } from 'rxjs';
+import { BehaviorSubject, Observable, interval, map } from 'rxjs';
 
 interface Time {
     hours: number;
@@ -14,9 +14,9 @@ export class TimeService {
     private _reloj$ = new BehaviorSubject<Time>(this.currentTime);
 
     constructor() {
-        setInterval(() => {
+        interval(1000).subscribe(() => {
             this._reloj$.next(this.currentTime);
-        }, 1000);
+        });
     }
 
     get reloj(): Observable<string> {

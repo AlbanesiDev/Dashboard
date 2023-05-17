@@ -80,7 +80,6 @@ export class DashboardComponent implements OnDestroy {
       })
     );
   }
-  
 }
 
 

@@ -1,10 +1,10 @@
 export class IterableList<T = any> {
     list: T[] = [];
-  
+
     index = 0;
-  
+
     constructor(...args: T[]) {
-      this.list = args;
+        this.list = args;
     }
 
     get(i: number) {

@@ -8,6 +8,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { SharedModule } from '../shared/shared.module';
 import { AngularMaterialModule } from '../shared/angularMaterial/AngularMaterial.module';
+import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { AngularMaterialModule } from '../shared/angularMaterial/AngularMaterial
         path: '**',
         redirectTo: 'login',
       }
-    ])
+    ]),
+    SweetAlert2Module.forRoot()
   ],
   exports: [
     AuthComponent,
