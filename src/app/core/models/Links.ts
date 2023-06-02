@@ -4,6 +4,14 @@ export interface NavItem {
   allowedRoles: string[];
 }
 
+export const usuarios: NavItem[] = [
+  {
+    path: 'usuarios',
+    title: 'Usuarios',
+    allowedRoles: ['Administrador'],
+  }
+]
+
 export const profesores: NavItem[] = [
   {
     path: 'profesores',
@@ -29,6 +37,6 @@ export const cursos: NavItem[] = [
   {
     path: 'cursos',
     title: 'Cursos',
-    allowedRoles: ['Administrador'],
+    allowedRoles: ['Administrador', 'Usuario'],
   },
 ]

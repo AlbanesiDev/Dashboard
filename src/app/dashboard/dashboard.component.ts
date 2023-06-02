@@ -1,8 +1,8 @@
 import { Component, OnDestroy } from '@angular/core';
 import { Time } from '@angular/common';
 import { Observable, Subject, map } from 'rxjs';
-import { Register } from '../core/models/Register';
-import { NavItem, cursos, estudiantes, profesores } from '../core/models/Links';
+import { Users } from '../core/models/Users';
+import { NavItem, cursos, estudiantes, profesores, usuarios } from '../core/models/Links';
 import { TimeService } from '../core/services/time.service';
 import { AuthService } from '../core/services/auth.service';
 
@@ -23,11 +23,12 @@ export class DashboardComponent implements OnDestroy {
   horaActual: Time | null = null;
   horaActual$: Observable<string>
   //Links
+  linksUsuarios = usuarios;
   linksProfesores = profesores;
   linksEstudiantes = estudiantes;
   linksCursos = cursos;
   //Auth
-  authUser$: Observable<Register | null>;
+  authUser$: Observable<Users | null>;
   destroyed$ = new Subject<void>();
 
   constructor(
@@ -43,14 +44,14 @@ export class DashboardComponent implements OnDestroy {
     this.verHora = this.mostrarHora ? 'Ocultar hora' : 'Ver hora';
   }
 
-  getFullName(user: Register | null): string {
+  getFullName(user: Users | null): string {
     if (user) {
       return user.firstName + ' ' + user.lastName;
     }
     return '';
   }
 
-  getRoleStyles(user: Register | null): any {
+  getRoleStyles(user: Users | null): any {
     if (user) {
       if (user.role === 'Administrador') {
         return { color: '#fc3f3f' };
@@ -72,7 +73,7 @@ export class DashboardComponent implements OnDestroy {
   
   verifyRole(link: NavItem): Observable<boolean> {
     return this.authUser$.pipe(
-      map((user: Register | null) => {
+      map((user: Users | null) => {
         if (user && link.allowedRoles.length > 0) {
           return link.allowedRoles.includes(user.role);
         }

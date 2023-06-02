@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Register } from 'src/app/core/models/Register';
+import { Users } from 'src/app/core/models/Users';
 import { AuthService } from 'src/app/core/services/auth.service';
 
 @Component({
@@ -29,7 +29,7 @@ export class RegisterComponent {
       this.registerForm.markAllAsTouched();
     } else {
       this.authService.UserRegister({       
-        ...this.registerForm.value as Register,
+        ...this.registerForm.value as Users,
         token: this.generateToken(),
         role: 'Usuario'
       });

@@ -2,8 +2,8 @@
     <button type="button" mat-button (click)="drawer.toggle()">
       <mat-icon>menu</mat-icon>
     </button>
-    <span>MyApp</span>
-    <h2 *ngIf="mostrarHora"><span>Hora actual: </span>{{horaActual$ |async}}</h2>
+    <h1 class="toolbar-title">CodeCamp</h1>
+    <h2 class="toolbar-clock" *ngIf="mostrarHora"><span>Hora actual: </span>{{horaActual$ |async}}</h2>
   </mat-toolbar>
   
   <mat-drawer-container class="sidenav-container">
@@ -23,6 +23,13 @@
 
         <mat-expansion-panel class="accordion" *ngIf="verifyRole(linksProfesores[0]) | async">
           <mat-expansion-panel-header>
+            <mat-panel-title class="accordion-title"> Usuarios </mat-panel-title>
+          </mat-expansion-panel-header>
+          <button mat-flat-button class="accent-color" [routerLink]="link.path" *ngFor="let link of linksUsuarios">{{ link.title }}</button>
+        </mat-expansion-panel>
+
+        <mat-expansion-panel class="accordion" *ngIf="verifyRole(linksProfesores[0]) | async">
+          <mat-expansion-panel-header>
             <mat-panel-title class="accordion-title"> Profesores </mat-panel-title>
           </mat-expansion-panel-header>
           <button mat-flat-button class="accent-color" [routerLink]="link.path" *ngFor="let link of linksProfesores">{{ link.title }}</button>
@@ -35,7 +42,7 @@
           <button mat-flat-button class="accent-color" [routerLink]="link.path" *ngFor="let link of linksEstudiantes">{{ link.title }}</button>
         </mat-expansion-panel>
   
-        <mat-expansion-panel class="accordion" *ngIf="verifyRole(linksCursos[0]) | async">
+        <mat-expansion-panel class="accordion">
           <mat-expansion-panel-header>
             <mat-panel-title class="accordion-title"> Cursos </mat-panel-title>
           </mat-expansion-panel-header>

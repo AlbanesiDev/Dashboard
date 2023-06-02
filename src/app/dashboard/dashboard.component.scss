@@ -1,14 +1,32 @@
 .toolbar {
     background-color: #53338f;
-
-    span {
+    
+    .toolbar-title {
+        font-family: raceSport;
         font-size: 1.25rem;
         margin: 10px;
         color: #ffffff;
     }
 
+    .toolbar-clock {
+        position: absolute;
+        right: 35px;
+        width: 315px;
+        margin: 0;
+        font-family: raceSport; 
+        font-size: 1.25rem;
+        background-color: #212121;
+        color: white;
+        border: 5px solid #212121;
+        border-radius: 5px;
+        span {
+            margin: 5px;
+        }
+    }
+    
     button {
         mat-icon {
+            color: white;
             margin: 0 !important;
         }
     }
@@ -16,7 +34,7 @@
 
 .sidenav-container {
     height: 93.4%;
-    background-color: rgb(255, 255, 255);
+    background-color: #ffffff;
 
     .sidenav {
         width: 250px;
@@ -66,17 +84,6 @@
     }
 }
 
-h2{
-    position: absolute;
-    right: 40px;
-    margin: 0;
-    padding: 5px;
-    padding-right: 15px;
-    border-radius: 10px;
-    color: white;
-    background-color: #252525;
-    font-size: 1.25rem;
-}
 
 .btn-verHora {
     width: 230px;

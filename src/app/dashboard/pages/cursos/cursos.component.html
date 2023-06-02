@@ -1,27 +1,56 @@
 <div class="main-top">
-  <div class="main-title">
-    <h1>Listado de Cursos</h1>
-  </div>
-  <div class="main-button">
-    <button (click)="createCourse()" mat-flat-button><mat-icon>add</mat-icon>
-      Agregar Curso
-    </button>
-  </div>
+    <div class="main-title">
+        <h1>Listado de Cursos</h1>
+    </div>
+    <div class="main-button">
+        <button
+        *ngIf="verifyRole(linksProfesores[0]) | async"
+        (click)="createCourse()" 
+        mat-flat-button
+        >
+            <mat-icon>add</mat-icon>
+            Agregar Curso
+        </button>
+    </div>
 </div>
 <div class="card-container">
-  <mat-card class="card-cursos" *ngFor="let course of courses">
-    <img mat-card-image [src]="course.imagePath" alt="{{course.course}}">
-    <mat-card-content>
-      <p><span>Curso de:</span> {{course.course}}</p>
-      <p><span>Profesor:</span> {{course.teacher}}</p>
-      <p><span>Comisión:</span> {{course.commission}}</p>
-      <p><span>Inicio:</span>{{course.start}}</p>
-      <p><span>Fin:</span>{{course.end}}</p>
-    </mat-card-content>
-    <button (click)="viewStudents(course.course, course.commission)" mat-button class="card-button-students">Ver Alumnos Inscriptos</button>
-    <mat-card-actions>
-      <button (click)="editCourse(course)" mat-button class="card-button-edit">Editar</button>
-      <button (click)="deleteCourse(course.id, course.commission)" mat-button class="card-button-delete">Eliminar</button>
-    </mat-card-actions>
-  </mat-card>
+    <mat-card class="card-cursos" *ngFor="let course of courses">
+        <img
+            mat-card-image
+            [src]="course.imagePath"
+            alt="{{ course.course }}"
+        />
+        <mat-card-content>
+            <p><span>Curso de:</span> {{ course.course }}</p>
+            <p><span>Profesor:</span> {{ course.teacher }}</p>
+            <p><span>Comisión:</span> {{ course.commission }}</p>
+            <p><span>Inicio:</span>{{ course.start }}</p>
+            <p><span>Fin:</span>{{ course.end }}</p>
+        </mat-card-content>
+        <button
+            (click)="viewStudents(course.course, course.commission)"
+            mat-button
+            class="card-button-students"
+        >
+            Ver Alumnos Inscriptos
+        </button>
+        <mat-card-actions>
+            <button
+                *ngIf="verifyRole(linksProfesores[0]) | async"
+                (click)="editCourse(course)"
+                mat-button
+                class="card-button-edit"
+            >
+                Editar
+            </button>
+            <button
+                *ngIf="verifyRole(linksProfesores[0]) | async"
+                (click)="deleteCourse(course.id, course.commission)"
+                mat-button
+                class="card-button-delete"
+            >
+                Eliminar
+            </button>
+        </mat-card-actions>
+    </mat-card>
 </div>

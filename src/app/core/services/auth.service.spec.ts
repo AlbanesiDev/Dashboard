@@ -3,7 +3,7 @@ import { Router } from "@angular/router";
 import { TestBed } from '@angular/core/testing';
 import { AuthService } from "./auth.service";
 import { Login } from "../models/Login";
-import { Register } from "../models/Register";
+import { Users } from "../models/Users";
 import { skip } from 'rxjs';
 import { enviroment } from "src/app/environments/Test";
 
@@ -24,7 +24,7 @@ describe('Pruebas del AuthService', () => {
       email: 'UserTest@mail.com',
       password: '12345678'
     };
-    const MOCK_REQUEST_RESULT: Register[] = [
+    const MOCK_REQUEST_RESULT: Users[] = [
       {
         id: 1,
         firstName: 'User',
@@ -60,7 +60,7 @@ describe('Pruebas del AuthService', () => {
         email: 'UserTest@mail.com',
         password: '12345678',
       };
-      const MOCK_REQUEST_RESULT: Register[] = [
+      const MOCK_REQUEST_RESULT: Users[] = [
         {
           id: 1,
           firstName: 'User',

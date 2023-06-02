@@ -3,73 +3,95 @@
         <h1>Lista de Alumnos</h1>
     </div>
     <div class="table-button">
-        <button (click)="addAlumno()" mat-flat-button class="me-3"><mat-icon>add</mat-icon>
-          Agregar alumno inscripto
+        <button
+            (click)="addAlumno()"
+            mat-flat-button
+            class="me-3"
+        >
+            <mat-icon>add</mat-icon>
+            Agregar alumno inscripto
         </button>
-        <button (click)="createAlumno()" mat-flat-button><mat-icon>add</mat-icon>
-          Agregar nuevo alumno
+        <button
+            *ngIf="verifyRole(linksProfesores[0]) | async"
+            (click)="createAlumno()"
+            mat-flat-button
+        >
+            <mat-icon>add</mat-icon>
+            Agregar nuevo alumno
         </button>
     </div>
 </div>
 <div class="table-container">
-  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+        <ng-container matColumnDef="id">
+            <th appTitles mat-header-cell *matHeaderCellDef>Id.</th>
+            <td mat-cell *matCellDef="let student">{{ student.id }}</td>
+        </ng-container>
 
-    <ng-container matColumnDef="id">
-      <th appTitles mat-header-cell *matHeaderCellDef>Id.</th>
-      <td mat-cell *matCellDef="let student">{{ student.id }}</td>
-    </ng-container>
+        <ng-container matColumnDef="fullName">
+            <th appTitles mat-header-cell *matHeaderCellDef>Nombre Completo</th>
+            <td mat-cell *matCellDef="let student">{{ student | fullname }}</td>
+        </ng-container>
 
-    <ng-container matColumnDef="fullName">
-      <th appTitles mat-header-cell *matHeaderCellDef>Nombre Completo</th>
-      <td mat-cell *matCellDef="let student">{{ student | fullname }}</td>
-    </ng-container>
+        <ng-container matColumnDef="course">
+            <th appTitles mat-header-cell *matHeaderCellDef>
+                Curso y Comisión
+            </th>
+            <td mat-cell *matCellDef="let student">{{ student.course }}</td>
+        </ng-container>
 
-    <ng-container matColumnDef="course">
-      <th appTitles mat-header-cell *matHeaderCellDef>Curso y Comisión</th>
-      <td mat-cell *matCellDef="let student">{{ student.course }}</td>
-    </ng-container>
+        <ng-container matColumnDef="note">
+            <th appTitles mat-header-cell *matHeaderCellDef>Calificación</th>
+            <td mat-cell *matCellDef="let student">{{ student.note }}</td>
+        </ng-container>
 
-    <ng-container matColumnDef="note">
-      <th appTitles mat-header-cell *matHeaderCellDef>Calificación</th>
-      <td mat-cell *matCellDef="let student">{{ student.note }}</td>
-    </ng-container>
+        <ng-container matColumnDef="email">
+            <th appTitles mat-header-cell *matHeaderCellDef>Email</th>
+            <td mat-cell *matCellDef="let student">{{ student.email }}</td>
+        </ng-container>
 
-    <ng-container matColumnDef="email">
-      <th appTitles mat-header-cell *matHeaderCellDef>Email</th>
-      <td mat-cell *matCellDef="let student">{{ student.email }}</td>
-    </ng-container>
+        <ng-container matColumnDef="info">
+            <th mat-header-cell *matHeaderCellDef>Info</th>
+            <td mat-cell *matCellDef="let student">
+                <button
+                    (click)="openDetallesDialog(student)"
+                    mat-mini-fab
+                    class="table-button-info"
+                >
+                    <mat-icon>info</mat-icon>
+                </button>
+            </td>
+        </ng-container>
 
-    <ng-container matColumnDef="info">
-      <th mat-header-cell *matHeaderCellDef>Info</th>
-      <td mat-cell *matCellDef="let student">
-        <button (click)="openDetallesDialog(student)" mat-mini-fab	class="table-button-info">
-          <mat-icon>info</mat-icon>
-        </button>
-      </td>
-    </ng-container>
+        <ng-container matColumnDef="edit">
+            <th mat-header-cell *matHeaderCellDef></th>
+            <td mat-cell *matCellDef="let student">
+                <button
+                    *ngIf="verifyRole(linksProfesores[0]) | async"
+                    (click)="edit(student)"
+                    mat-flat-button
+                    class="table-button-edit"
+                >
+                    Editar
+                </button>
+            </td>
+        </ng-container>
 
-    <ng-container matColumnDef="edit">
-      <th mat-header-cell *matHeaderCellDef></th>
-      <td mat-cell *matCellDef="let student">
-        <button (click)="edit(student)" mat-flat-button class="table-button-edit">
-          Editar
-        </button>
-      </td>
-    </ng-container>
+        <ng-container matColumnDef="delete">
+            <th mat-header-cell *matHeaderCellDef></th>
+            <td mat-cell *matCellDef="let student">
+                <button
+                    *ngIf="verifyRole(linksProfesores[0]) | async"
+                    (click)="delete(student.id)"
+                    mat-flat-button
+                    class="table-button-delete"
+                >
+                    Eliminar
+                </button>
+            </td>
+        </ng-container>
 
-
-    <ng-container matColumnDef="delete">
-      <th mat-header-cell *matHeaderCellDef></th>
-      <td mat-cell *matCellDef="let student">
-        <button (click)="delete(student.id)" mat-flat-button class="table-button-delete">
-          Eliminar
-        </button>
-      </td>
-    </ng-container>
-
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
-  </table>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
 </div>
-
-

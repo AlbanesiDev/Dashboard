@@ -1,8 +1,8 @@
 import { BehaviorSubject, Observable, of } from 'rxjs';
-import { Register } from "src/app/core/models/Register";
+import { Users } from "src/app/core/models/Users";
 import { Login } from "src/app/core/models/Login";
 
-export const USER_ADMIN_MOCK: Register = {
+export const USER_ADMIN_MOCK: Users = {
   id: 1,
   firstName: 'Test',
   lastName: 'Admin',
@@ -14,7 +14,7 @@ export const USER_ADMIN_MOCK: Register = {
 
 export class AuthServiceMock {
 
-  private authUser$ = new BehaviorSubject<Register | null>(null);
+  private authUser$ = new BehaviorSubject<Users | null>(null);
 
   UserLogin(formValue: Login): void {
     this.authUser$.next(USER_ADMIN_MOCK);

@@ -1,27 +1,37 @@
 import { Injectable } from '@angular/core';
 import { Observable, BehaviorSubject, map, catchError, throwError } from 'rxjs';
-import { Register } from '../models/Register';
+import { Users } from '../models/Users';
 import { Router } from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Login } from '../models/Login';
 import { enviroment } from 'src/app/environments/Test';
+import { Store } from '@ngrx/store';
+import { AppState } from 'src/app/store';
+import { SetUserAuthenticated, RemoveUserAuthenticated } from 'src/app/store/auth/auth.actions';
+import { selectAuthUser } from 'src/app/store/auth/auth.selectors';
 import Swal from 'sweetalert2';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  private authUser$ = new BehaviorSubject<Register | null>(null);
+  private authUser$ = new BehaviorSubject<Users | null>(null);
 
-  constructor(private router: Router, private httpClient: HttpClient) { }
+  constructor(private router: Router, private httpClient: HttpClient, private store: Store<AppState>) { }
 
-  getUserAuthenticated(): Observable<Register | null> {
-    return this.authUser$.asObservable();
+  getUserAuthenticated(): Observable<Users | null> {
+    return this.store.select(selectAuthUser);
   }
   
+  SetUserAuthenticated(usuario: Users): void {    
+    this.store.dispatch(SetUserAuthenticated({ payload: usuario }))
+    this.authUser$.next(usuario)
+  }
+
+
   UserLogin(formValue: Login): void {
     this.httpClient
-      .get<Register[]>(`${enviroment.apiBaseUrl}/Users`, {
+      .get<Users[]>(`${enviroment.apiBaseUrl}/Users`, {
         params: {
           ...formValue,
         },
@@ -31,7 +41,7 @@ export class AuthService {
           const UserAuthenticated = users[0];
           if (UserAuthenticated) {
             localStorage.setItem('token', UserAuthenticated.token);
-            this.authUser$.next(UserAuthenticated);
+            this.SetUserAuthenticated(UserAuthenticated);
             this.router.navigate(['dashboard']);
           } else {
             this.showInvalidData();
@@ -42,13 +52,13 @@ export class AuthService {
 
   UserLogout(): void {
     localStorage.removeItem('token');
-    this.authUser$.next(null);
+    this.store.dispatch(RemoveUserAuthenticated());
     this.router.navigate(['auth']);
   }
 
   CheckToken(): Observable<boolean> {
     const token = localStorage.getItem('token');
-    return this.httpClient.get<Register[]>(
+    return this.httpClient.get<Users[]>(
       `${enviroment.apiBaseUrl}/Users?token=${token}`,
       {
         headers: new HttpHeaders({
@@ -61,7 +71,7 @@ export class AuthService {
         const UserAuthenticated = users[0];
         if (UserAuthenticated) {
           localStorage.setItem('token', UserAuthenticated.token);
-          this.authUser$.next(UserAuthenticated);
+          this.SetUserAuthenticated(UserAuthenticated);
         }
         return !!UserAuthenticated;
       }),
@@ -72,9 +82,9 @@ export class AuthService {
     );
   }
 
-  UserRegister(Usuarios: Register): void {
+  UserRegister(Usuarios: Users): void {
     this.httpClient
-      .post<Register>(`${enviroment.apiBaseUrl}/Users`, Usuarios)
+      .post<Users>(`${enviroment.apiBaseUrl}/Users`, Usuarios)
       .subscribe(() => {
         this.showRegistrationSuccessful();
       });

@@ -8,6 +8,10 @@ import { DetallesComponent } from './detalles/detalles.component';
 import { StudentsServices } from 'src/app/core/services/students.service';
 import { Students } from 'src/app/core/models/Students';
 import { AddEnrolledComponent } from './abm-alumnos/addEnrolled/addEnrolled.component';
+import { Observable, map } from 'rxjs';
+import { NavItem, cursos, estudiantes, profesores } from 'src/app/core/models/Links';
+import { Users } from 'src/app/core/models/Users';
+import { AuthService } from 'src/app/core/services/auth.service';
 
 @Component({
   selector: 'app-alumnos',
@@ -18,16 +22,22 @@ import { AddEnrolledComponent } from './abm-alumnos/addEnrolled/addEnrolled.comp
 export class AlumnosComponent {  
   
   displayedColumns: string[] = ['id', 'fullName', 'course', 'note', 'email', 'info', 'edit', 'delete'];
-
   dataSource = new MatTableDataSource<Students>();
+  
+  linksProfesores = profesores;
+  linksEstudiantes = estudiantes;
+  linksCursos = cursos;
+  authUser$: Observable<Users | null>;
 
   constructor(
     private matDialog: MatDialog,
-    private studentsService: StudentsServices
+    private studentsService: StudentsServices,
+    private authService: AuthService
   ) {
     this.studentsService.getStudents().subscribe((students) => {
       this.dataSource.data = students;
     });
+    this.authUser$ = this.authService.getUserAuthenticated();
   }
 
   openDetallesDialog(student: Students): void {
@@ -95,5 +105,16 @@ export class AlumnosComponent {
         }
       }
     });
+  }
+
+  verifyRole(link: NavItem): Observable<boolean> {
+    return this.authUser$.pipe(
+      map((user: Users | null) => {
+        if (user && link.allowedRoles.length > 0) {
+          return link.allowedRoles.includes(user.role);
+        }
+        return true;
+      })
+    );
   }
 }

@@ -1,0 +1,62 @@
+<div class="dialog-container">
+    <div class="row">
+        <div class="col-md-12">
+            <h2>Editar Alumno</h2>
+        </div>
+    </div>
+    <form [formGroup]="registerForm">
+        <div class="row">
+            <div class="col-md-6">
+                <mat-form-field>
+                    <mat-label>Nombre:</mat-label>
+                    <input [formControl]="firstNameControl" type="text" matInput />
+                    <mat-error *ngFor="let error of firstNameControl.errors | keyvalue">{{error | controlErrors}}</mat-error>
+                </mat-form-field>
+            </div>
+            <div class="col-md-6">
+                <mat-form-field>
+                    <mat-label>Apellido:</mat-label>
+                    <input [formControl]="lastNameControl" type="text" matInput />
+                    <mat-error *ngFor="let error of lastNameControl.errors | keyvalue">{{error | controlErrors}}</mat-error>
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <mat-form-field>
+                    <mat-label>Contraseña:</mat-label>
+                    <input matInput [formControl]="passwordControl" type="password" autocomplete="off">
+                    <mat-error *ngFor="let error of passwordControl.errors | keyvalue">{{ error | controlErrors }}</mat-error>
+                </mat-form-field>
+            </div> 
+            <div class="col-md-6">
+                <mat-form-field>
+                    <mat-label>Rol:</mat-label>
+                    <mat-select [formControl]="roleControl" >
+                        <mat-option *ngFor="let role of rolesNames" [value]="role">
+                            {{ role }}
+                        </mat-option>
+                    </mat-select>
+                    <mat-error *ngFor="let error of roleControl.errors | keyvalue">{{ error | controlErrors }}</mat-error>
+                </mat-form-field>
+            </div>    
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <mat-form-field class="dialog-email">
+                    <mat-label>Email:</mat-label>
+                    <input [formControl]="emailControl" type="email" matInput />
+                    <mat-error *ngFor="let error of emailControl.errors | keyvalue">{{error | controlErrors}}</mat-error>
+                </mat-form-field>
+            </div>
+        </div>
+    </form>
+    <div class="row mt-4">
+        <div class="col-md-6 dialog-button-cancel">
+            <button mat-dialog-close mat-flat-button>Cancelar</button>
+        </div>
+        <div class="col-md-6 dialog-button-save">
+            <button (click)="save()" mat-flat-button>Guardar</button>
+        </div>
+    </div>
+</div>
