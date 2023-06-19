@@ -1,10 +1,10 @@
 <h2 align="center"> 
-    PF - Albanesi
+    Dashboard
 </h2>
 
 <h1 align="center">
   <br>
-  <a href="http:/BeFasterOfficial.com"><img src="https://live.staticflickr.com/65535/52915848914_6d41f1837c_o.png" alt="BeFaster" width="200"></a>
+  <a href="#"><img src="https://live.staticflickr.com/65535/52915848914_6d41f1837c_o.png" alt="#" width="200"></a>
   <br>
     CodeCamp
   <br>

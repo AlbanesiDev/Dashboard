@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "1PF-Albanesi": {
+    "Dashboard": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -18,7 +18,7 @@
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
             "allowedCommonJsDependencies": ["lodash"],
-            "outputPath": "dist/1-pf-albanesi",
+            "outputPath": "dist/Dashboard",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": [
@@ -49,8 +49,8 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "500kb",
-                  "maximumError": "1mb"
+                  "maximumWarning": "1.5mb",
+                  "maximumError": "3mb"
                 },
                 {
                   "type": "anyComponentStyle",
@@ -75,10 +75,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "1PF-Albanesi:build:production"
+              "browserTarget": "Dashboard:build:production"
             },
             "development": {
-              "browserTarget": "1PF-Albanesi:build:development"
+              "browserTarget": "Dashboard:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -86,7 +86,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "1PF-Albanesi:build"
+            "browserTarget": "Dashboard:build"
           }
         },
         "test": {
