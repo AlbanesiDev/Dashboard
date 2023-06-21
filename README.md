@@ -21,7 +21,9 @@
 <br>
 <br>
 
-![screenshot](#)
+![screenshot](https://live.staticflickr.com/65535/52990384906_498ff5ed24_o.png)
+
+
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec non mollis urna. Donec consectetur sollicitudin lobortis. Maecenas tempor pulvinar nunc, eget cursus arcu sodales at. Donec nec tristique odio. Pellentesque dapibus odio quis ipsum rutrum, in semper velit finibus. Nulla pellentesque nisi eu tortor rutrum, vel rutrum nisl imperdiet. Duis semper interdum massa. Quisque sit amet dignissim turpis, id semper mauris. Nunc sollicitudin tincidunt leo eget venenatis. Nullam lorem ligula, rhoncus in turpis ut, iaculis aliquam purus. Etiam vitae ex vitae erat molestie venenatis sagittis sed ex. Cras ac augue vitae lectus tincidunt tristique aliquet eget velit.
 
@@ -48,13 +50,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec non mollis urna. 
 <br>
 
 ## Tecnologías utilizadas
-<div>
-<img src="https://img.icons8.com/?size=512&id=l9a5tcSnBwcf&format=png" alt="Angular" height="80"/>
-<img src="https://ultimatecourses.com/static/icons/ngrx.svg" alt="Ngrx" height="80"/>
-<img src="https://img.icons8.com/?size=512&id=uJM6fQYqDaZK&format=png" alt="CSS" height="80"/>
-<img src="https://img.icons8.com/?size=512&id=QBqFNfPPB2Kx&format=png" alt="Sass" height="80"/>
-<img src="https://img.icons8.com/color/452/bootstrap.png" alt="Bootstrap" height="80"/>
-</div>
+[![My Skills](https://skillicons.dev/icons?i=angular,reactivex,typescript,sass,bootstrap&theme=light)](https://skillicons.dev)
 
 <br>
 <br>
