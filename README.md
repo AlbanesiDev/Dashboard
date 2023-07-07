@@ -1,5 +1,5 @@
 <h2 align="center"> 
-    Dashboard
+    Proyecto Final Angular - CoderHouse
 </h2>
 
 <h1 align="center">
