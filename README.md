@@ -87,6 +87,12 @@ $ `ng test`
 
 ---
 
+## Certificado
+
+![screenshot](https://live.staticflickr.com/65535/53030131408_0c7578527c_o.png)
+
+---
+
 <br>
 
 > LinkedIn [@Joaquin Albanesi](https://www.linkedin.com/in/joaquin-albanesi/) &nbsp;&nbsp;&nbsp;&nbsp; | 
