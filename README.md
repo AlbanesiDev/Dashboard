@@ -13,8 +13,9 @@
 <p align="center">
   <a href="#Funcionalidades">Funcionalidades</a> •
   <a href="#Tecnologías-utilizadas">Tecnologías utilizadas</a> •
-  <a href="#Servidor-de-desarrollo">Servidor de desarrollo</a> •
-  <a href="#Ejecutar-pruebas-unitarias">Ejecutar pruebas unitarias</a>
+  <a href="#Usuarios">Usuarios</a> •
+  <a href="#Ejecutar-pruebas-unitarias">Ejecutar pruebas unitarias</a> •
+  <a href="#Certificado">Certificado</a>
 </p>
 
 <br>
@@ -59,20 +60,17 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec non mollis urna. 
 ## Este proyecto fue generado con [Angular CLI](https://github.com/angular/angular-cli) versión 15.2.5.
 
 <br>
-<br>
-<br>
 
-## Servidor de desarrollo
+## Usuarios
 ```bash
-# Para abrir un un servidor de desarrollo ejecute:
-$ `ng serve`
+# Perfil de administrador:
+  Email: adminExample@email.com
+  Contraseña: 12345678
 
-# Navega a
-$ http://localhost:4200/
-
-# La aplicación se recargará automáticamente si cambias alguno de los archivos fuente.
+# Perfil de usuario:
+  Email: userExample@email.com
+  Contraseña: 12345678
 ```
-<br>
 <br>
 
 ## Ejecutar pruebas unitarias
@@ -81,8 +79,6 @@ $ http://localhost:4200/
 $ `ng test`
 ```
 
-<br>
-<br>
 <br>
 
 ---
