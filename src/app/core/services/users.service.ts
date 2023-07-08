@@ -8,7 +8,7 @@ import { Users } from "../models/Users";
 })
 
 export class UsersServices {
-    private apiUrl = 'http://localhost:3000/Users';
+    private apiUrl = 'https://json-zeta-sage.vercel.app/Users';
     
     constructor (private http: HttpClient) { }
     

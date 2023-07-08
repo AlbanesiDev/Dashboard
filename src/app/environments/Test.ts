@@ -1,3 +1,3 @@
 export const enviroment = {
-    apiBaseUrl: 'http://localhost:3000',
+    apiBaseUrl: 'https://json-zeta-sage.vercel.app',
 }

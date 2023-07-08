@@ -8,7 +8,7 @@ import { Inscription } from "../models/Inscription";
 })
 
 export class InscriptionsServices {
-    private apiUrl = 'http://localhost:3000/Inscription';
+    private apiUrl = 'https://json-zeta-sage.vercel.app/Inscription';
     
     constructor (private http: HttpClient) { }
 

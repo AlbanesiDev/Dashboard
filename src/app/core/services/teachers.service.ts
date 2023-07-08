@@ -8,7 +8,7 @@ import { Teachers } from "../models/Teachers";
 })
 
 export class TeachersServices {
-    private apiUrl = 'http://localhost:3000/teachers';
+    private apiUrl = 'https://json-zeta-sage.vercel.app/teachers';
     
     constructor (private http: HttpClient) { }
 
