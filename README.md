@@ -47,17 +47,11 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec non mollis urna. 
 * Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec non mollis urna. Donec consectetur sollicitudin lobortis.
 
 <br>
-<br>
-<br>
+
+## Este proyecto fue generado con [Angular CLI](https://github.com/angular/angular-cli) versión 15.2.5.
 
 ## Tecnologías utilizadas
 [![My Skills](https://skillicons.dev/icons?i=angular,reactivex,typescript,sass,bootstrap&theme=light)](https://skillicons.dev)
-
-<br>
-<br>
-<br>
-
-## Este proyecto fue generado con [Angular CLI](https://github.com/angular/angular-cli) versión 15.2.5.
 
 <br>
 
